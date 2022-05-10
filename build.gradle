@@ -1,0 +1,60 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.kotlin_version = '1.6.10'
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.0.4"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    // Compose
+    composeVersion = '1.1.1'
+    constraintLayoutComposeVersion = '1.0.0-rc01'
+    activityComposeVersion = '1.4.0'
+    accompanistPagerVersion = '0.20.0'
+    composeNavigationVersion = '2.3.0'
+    composeViewModelVersion = '2.4.0'
+
+    // Coroutine
+    coroutineVersion = '1.5.2'
+    coroutineTestVersion = '1.5.2'
+
+    // OkHTTP
+    okHttpVersion = '4.9.2'
+
+    // Moshi
+    moshiVersion = '1.12.0'
+    moshiAdaptersVersion = '1.12.0'
+    moshiKotlinVersion = '1.12.0'
+
+    // Retrofit
+    retrofitVersion = '2.9.0'
+    retrofitMoshiConverterVersion = '2.9.0'
+    loggingInterceptorVersion = '4.9.2'
+
+    // Mockk
+    mockkVersion = '1.12.0'
+
+    // Junit
+    junitVersion = '4.13.2'
+
+    //Navigation graph
+    navGraph = '2.4.1'
+
+    //lifecycle
+    lifecycleVersion = '2.5.0-alpha03'
+
+    // Robolectric
+    robolectricVersion = '4.7.2'
+}

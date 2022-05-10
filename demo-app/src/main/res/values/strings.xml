@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ThePeerAndroidSDK</string>
+    <string name="send_money">Send Money</string>
+    <string name="checkout">Checkout</string>
+    <string name="direct_debit">Direct Debit</string>
+    <string name="user_reference">73f03de5-1043-4ad1-bc2e-aa4d94ebee4f</string>
+    <string name="staging_user_reference">b557c7a0-f343-43a4-acf1-4885eb049c3d</string>
+</resources>
