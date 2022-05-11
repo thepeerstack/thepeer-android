@@ -63,7 +63,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
         val thePeer = ThePeer.Builder(
             activity = this,
             amount = BigDecimal(10000.00),
-            currency = ThePeerCurrency.NAIRA,
+            currency = "NGN",
             userReference = getString(R.string.user_reference),
             resultListener = resultListener
         ).setMeta(mapOf("remark" to "Enjoy")).build()
@@ -86,7 +86,7 @@ JAVA
         ThePeer thePeer =new ThePeer.Builder(
                 this,
                 new BigDecimal("1000.00"),
-                ThePeerCurrency.NAIRA,
+                "NGN",
                 getResources().getString(R.string.user_reference),
                 new ThePeerResultListener())
                 
@@ -96,7 +96,7 @@ JAVA
 | Paramater name          |  Description                          |  Required                         |
 |------------------------ | --------------------------------------|--------------------------------------|
 | `amount`                | The amount you intend to send and must be pass as an integer in kobo      |`true`|
-| `currency `             | Currency which can be  `ThePeerCurrency.NGN` or  `ThePeerCurrency.USD`    |`true`|
+| `currency `             | Currency which can be  `"NGN"` or  `"USD"`    |`true`|
 | `userReference`         | The user reference returned by Thepeer API when a user has been indexed              |`true`|
 | `meta`  | This object should contain additional/optional attributes you would like to have on your transaction response   |`false`|
 
@@ -213,4 +213,12 @@ JAVA
 
 
 ```
+## Support
+
+If you're having trouble with Thepeer React or your integration, please reach out to us at <support@thepeer.co>. We're more than happy to help you out.
+
+## Thepeer API References
+
+- [Thepeer API Docs](https://docs.thepeer.co)
+- [Thepeer Dashboard](https://dashboard.thepeer.co)
  
