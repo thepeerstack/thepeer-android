@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         ((Button) findViewById(R.id.btnSendMoney)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                thePeer.sendMoney();
+                thePeer.send();
             }
         });
 

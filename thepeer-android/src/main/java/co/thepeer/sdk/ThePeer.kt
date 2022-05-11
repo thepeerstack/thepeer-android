@@ -110,10 +110,10 @@ class ThePeer internal constructor(
     /**
      * This function will be called to launch ThePeer Send Money Widget
      */
-    fun sendMoney() {
+    fun send() {
         val params = ThePeerParam(
             publicKey,
-            getSdkType(ThePeerSdkType.SEND_MONEY),
+            getSdkType(ThePeerSdkType.SEND),
             amount,
             currency,
             userReference,
@@ -167,7 +167,7 @@ class ThePeer internal constructor(
 
     private fun getSdkType(type: Enum<ThePeerSdkType>): String {
         return when (type) {
-            ThePeerSdkType.SEND_MONEY -> {
+            ThePeerSdkType.SEND -> {
                 return ThePeerConstants.SEND_MODE
             }
             ThePeerSdkType.CHECKOUT -> {

@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnSendMoney.setOnClickListener {
             //calling ThePeer SDK
-            thePeer.sendMoney()
+            thePeer.send()
         }
         binding.btnCheckout.setOnClickListener {
             thePeer.checkout("email@gmail.com")

@@ -22,4 +22,4 @@ data class ThePeerParam(
 ): Parcelable
 
 
-enum class ThePeerSdkType{SEND_MONEY, CHECKOUT, DIRECT_CHARGE, NONE}
+enum class ThePeerSdkType{SEND, CHECKOUT, DIRECT_CHARGE, NONE}
