@@ -140,15 +140,15 @@ thePeer.checkout(String email);
 
 ```
 
-## Direct Debit
+## Direct Charge
 
-Initiate the Direct Debit request by calling the below function
+Initiate the Direct Charge request by calling the below function
 
 KOTLIN
 
 ```kotlin
 
-thePeer.directDebit()
+thePeer.directCharge()
 
 ```
 
@@ -156,7 +156,7 @@ JAVA
 
 ```java
 
-thePeer.directDebit();
+thePeer.directCharge();
 
 ```
 
