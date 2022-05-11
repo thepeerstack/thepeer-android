@@ -168,10 +168,10 @@ class ThePeer internal constructor(
     private fun getSdkType(type: Enum<ThePeerSdkType>): String {
         return when (type) {
             ThePeerSdkType.SEND -> {
-                return ThePeerConstants.SEND_MODE
+                return ThePeerConstants.SEND
             }
             ThePeerSdkType.CHECKOUT -> {
-                return ThePeerConstants.CHECKOUT_MODE
+                return ThePeerConstants.CHECKOUT
             }
             ThePeerSdkType.DIRECT_CHARGE -> {
                 return ThePeerConstants.DIRECT_CHARGE
