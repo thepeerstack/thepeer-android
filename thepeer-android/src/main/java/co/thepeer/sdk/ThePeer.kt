@@ -174,7 +174,7 @@ class ThePeer internal constructor(
                 return ThePeerConstants.CHECKOUT_MODE
             }
             ThePeerSdkType.DIRECT_CHARGE -> {
-                return ThePeerConstants.DIRECT_DEBIT
+                return ThePeerConstants.DIRECT_CHARGE
             }
             else -> ""
         }
