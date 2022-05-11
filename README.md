@@ -100,15 +100,15 @@ JAVA
 | `userReference`         | The user reference returned by Thepeer API when a user has been indexed              |`true`|
 | `meta`  | This object should contain additional/optional attributes you would like to have on your transaction response   |`false`|
 
-## Send Money
+## Send
 
-Initiate the send money request by calling the below function
+Initiate the send request by calling the below function
 
 KOTLIN
 
 ```kotlin
 
-thePeer.sendMoney()
+thePeer.send()
 
 ```
 
@@ -116,7 +116,7 @@ JAVA
 
 ```java
 
-thePeer.sendMoney();
+thePeer.send();
 
 ```
 
