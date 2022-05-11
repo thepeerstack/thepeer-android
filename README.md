@@ -2,9 +2,19 @@
 
 ThePeer Android SDK gives one integration access to all fintech businesses on your Android App
 
+
 1. Send Money
-2. Checkout
-3. Direct Charge
+3. Checkout
+4. Direct Charge
+
+## Demo
+
+https://user-images.githubusercontent.com/16048595/167891393-6f198712-7648-4f45-959a-a289fab42006.mo
+
+https://user-images.githubusercontent.com/16048595/167891381-2ad76193-3cf1-4abe-870b-0924fee498fb.mov 
+
+https://user-images.githubusercontent.com/16048595/167891309-d6608bba-20dc-4840-be60-96c6ef390ea3.mov
+
 
 ## Setup Implementation
 
