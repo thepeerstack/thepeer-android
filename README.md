@@ -63,7 +63,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
         val thePeer = ThePeer.Builder(
             activity = this,
             amount = BigDecimal(10000.00),
-            currency = ThePeerCurrency.NAIRA,
+            currency = "NGN",
             userReference = getString(R.string.user_reference),
             resultListener = resultListener
         ).setMeta(mapOf("remark" to "Enjoy")).build()
@@ -86,7 +86,7 @@ JAVA
         ThePeer thePeer =new ThePeer.Builder(
                 this,
                 new BigDecimal("1000.00"),
-                ThePeerCurrency.NAIRA,
+                "NGN",
                 getResources().getString(R.string.user_reference),
                 new ThePeerResultListener())
                 
