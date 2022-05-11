@@ -2,7 +2,7 @@ package co.thepeer.sdk.utils
 
 class ThePeerCurrency {
     companion object{
-        const val NAIRA = "NGN"
-        const val DOLLAR = "USD"
+        const val NGN = "NGN"
+        const val USD = "USD"
     }
 }

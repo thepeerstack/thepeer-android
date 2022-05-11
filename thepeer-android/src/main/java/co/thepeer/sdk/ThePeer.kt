@@ -146,12 +146,12 @@ class ThePeer internal constructor(
     }
 
     /**
-     * This function will be called to launch ThePeer Direct Debit Widget
+     * This function will be called to launch ThePeer Direct Charge Widget
      */
-    fun directDebit() {
+    fun directCharge() {
         val params = ThePeerParam(
             publicKey,
-            getSdkType(ThePeerSdkType.DIRECT_DEBIT),
+            getSdkType(ThePeerSdkType.DIRECT_CHARGE),
             amount,
             currency,
             userReference,
@@ -173,7 +173,7 @@ class ThePeer internal constructor(
             ThePeerSdkType.CHECKOUT -> {
                 return ThePeerConstants.CHECKOUT_MODE
             }
-            ThePeerSdkType.DIRECT_DEBIT -> {
+            ThePeerSdkType.DIRECT_CHARGE -> {
                 return ThePeerConstants.DIRECT_DEBIT
             }
             else -> ""

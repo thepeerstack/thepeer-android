@@ -74,7 +74,7 @@ internal class WebInterface(private val activity: FragmentActivity) {
 
     }
 
-    private fun handleDirectEvent(event: ThePeerEvent) {
+    private fun handleDirectChargeEvent(event: ThePeerEvent) {
 
         when (event.event) {
             DIRECT_CHARGE_SUCCESS -> {
@@ -109,7 +109,7 @@ internal class WebInterface(private val activity: FragmentActivity) {
                 handleCheckoutEvent(event)
             }
             "direct_debit" -> {
-                handleDirectEvent(event)
+                handleDirectChargeEvent(event)
             }
         }
     }

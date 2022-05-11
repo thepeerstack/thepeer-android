@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         val thePeer = ThePeer.Builder(
             activity = this,
             amount = BigDecimal(10000.00),
-            currency = ThePeerCurrency.NAIRA,
+            currency = ThePeerCurrency.NGN,
             userReference = getString(R.string.user_reference),
             resultListener = resultListener
         ).setMeta(mapOf("city" to "Uyo")).build()
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             thePeer.checkout("email@gmail.com")
         }
         binding.btnDirectDebit.setOnClickListener {
-            thePeer.directDebit()
+            thePeer.directCharge()
         }
     }
 

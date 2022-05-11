@@ -25,10 +25,10 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <Button
-        android:id="@+id/btnDirectDebit"
+        android:id="@+id/btnDirectCharge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/direct_debit"
+        android:text="@string/direct_charge"
         app:layout_constraintTop_toBottomOf="@id/btnCheckout"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />

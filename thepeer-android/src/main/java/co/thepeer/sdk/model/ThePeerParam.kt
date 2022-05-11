@@ -1,5 +1,6 @@
 package co.thepeer.sdk.model
 
+import android.os.Parcel
 import android.os.Parcelable
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.parcelize.Parcelize
@@ -21,4 +22,4 @@ data class ThePeerParam(
 ): Parcelable
 
 
-enum class ThePeerSdkType{SEND_MONEY, CHECKOUT, DIRECT_DEBIT, NONE}
+enum class ThePeerSdkType{SEND_MONEY, CHECKOUT, DIRECT_CHARGE, NONE}

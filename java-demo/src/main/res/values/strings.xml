@@ -2,6 +2,6 @@
     <string name="app_name">java-demo</string>
     <string name="send_money">Send Money</string>
     <string name="checkout">Checkout</string>
-    <string name="direct_debit">Direct Debit</string>
+    <string name="direct_charge">Direct Charge</string>
     <string name="user_reference">73f03de5-1043-4ad1-bc2e-aa4d94ebee4f</string>
 </resources>
