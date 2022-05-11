@@ -96,7 +96,7 @@ JAVA
 | Paramater name          |  Description                          |  Required                         |
 |------------------------ | --------------------------------------|--------------------------------------|
 | `amount`                | The amount you intend to send and must be pass as an integer in kobo      |`true`|
-| `currency `             | Currency which can be  `ThePeerCurrency.NGN` or  `ThePeerCurrency.USD`    |`true`|
+| `currency `             | Currency which can be  `"NGN"` or  `"USD"`    |`true`|
 | `userReference`         | The user reference returned by Thepeer API when a user has been indexed              |`true`|
 | `meta`  | This object should contain additional/optional attributes you would like to have on your transaction response   |`false`|
 
