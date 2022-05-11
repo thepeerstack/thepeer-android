@@ -213,4 +213,12 @@ JAVA
 
 
 ```
+## Support
+
+If you're having trouble with Thepeer React or your integration, please reach out to us at <support@thepeer.co>. We're more than happy to help you out.
+
+## Thepeer API References
+
+- [Thepeer API Docs](https://docs.thepeer.co)
+- [Thepeer Dashboard](https://dashboard.thepeer.co)
  
