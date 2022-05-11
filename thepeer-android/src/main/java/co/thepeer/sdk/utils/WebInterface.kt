@@ -101,14 +101,14 @@ internal class WebInterface(private val activity: FragmentActivity) {
     fun sendResponse(response: String) {
         Logger.log(this, response)
         val event: ThePeerEvent? = convertToGsonFromString(response)
-        when (event?.event?.getFirstPart()) {
+        when (event?.data?.channel) {
             "send" -> {
                 handleSendEvent(event)
             }
             "checkout" -> {
                 handleCheckoutEvent(event)
             }
-            "direct_debit" -> {
+            "direct_charge" -> {
                 handleDirectChargeEvent(event)
             }
         }

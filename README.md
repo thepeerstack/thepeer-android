@@ -4,7 +4,7 @@ ThePeer Android SDK gives one integration access to all fintech businesses on yo
 
 1. Send Money
 2. Checkout
-3. Direct Debit
+3. Direct Charge
 
 ## Setup Implementation
 
@@ -26,7 +26,7 @@ To your app-level build.gradle file add:
 ```groovy
 dependencies {
     // ...
-    implementation "co.thepeer.android-sdk:android:sdk:0.0.1-alpha"
+    implementation "co.thepeer.android-sdk:android:sdk:[coming soon]"
 }
 ```
 
