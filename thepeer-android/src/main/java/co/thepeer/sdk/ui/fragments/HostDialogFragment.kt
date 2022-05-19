@@ -60,12 +60,20 @@ class HostDialogFragment(private val thePeerParam: ThePeerParam) :
         }
 
         activity?.let {
-            binding.webViewPeer.addJavascriptInterface(WebInterface(it), "Android")
+            binding.webViewPeer.addJavascriptInterface(WebInterface { results ->
+                handleRedirect(results)
+            }, "Android")
         }
 
         binding.webViewPeer.loadUrl(transactionUrl)
     }
 
+       private fun handleRedirect(result: ThePeerResult) {
+        val resultData = Intent()
+        resultData.putExtra(ThePeerConstants.TRANSACTION_RESULT, result)
+        activity?.setResult(AppCompatActivity.RESULT_OK, resultData)
+        activity?.finish()
+    }
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = context?.let { BottomSheetDialog(it, R.style.CustomBottomSheetDialogTheme) }
         binding = FragmentHostDialogBinding.inflate(layoutInflater)
