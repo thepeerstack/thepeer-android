@@ -55,18 +55,6 @@ class WebInterfaceTest {
     }
 
     @Test
-    fun `handle send event - is error`() {
-        val event = webInterface.convertToGsonFromString(MockData.sendError) as ThePeerEvent
-        webInterface.sendResponse(MockData.sendError)
-        verify {
-            webInterface.handleSendEvent(event)
-        }
-
-        assertEquals("send.user_insufficient_funds", event.event)
-
-    }
-
-    @Test
     fun `handle checkout event - success`() {
         val event = webInterface.convertToGsonFromString(MockData.checkoutSuccess) as ThePeerEvent
         webInterface.sendResponse(MockData.checkoutSuccess)
@@ -92,7 +80,8 @@ class WebInterfaceTest {
 
     @Test
     fun `handle direct debit event - success`() {
-        val event = webInterface.convertToGsonFromString(MockData.directDebitSuccess) as ThePeerEvent
+        val event =
+            webInterface.convertToGsonFromString(MockData.directDebitSuccess) as ThePeerEvent
         webInterface.sendResponse(MockData.directDebitSuccess)
         verify {
             webInterface.handleDirectDebitEvent(event)

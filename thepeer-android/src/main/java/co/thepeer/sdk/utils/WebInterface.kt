@@ -21,7 +21,7 @@ internal class WebInterface(private val redirect: (ThePeerResult) -> Unit ) {
     private val DIRECT_CHARGE_INSUFFICIENT_FUNDS = "direct_debit.insufficient_funds"
     private val DIRECT_CHARGE_USER_INSUFFICIENT_FUNDS =
         "direct_debit.user_insufficient_funds"
-    private val DIRECT_DEBIT_SUCCESS = "direct_debit.success"
+    private val DIRECT_CHARGE_SUCCESS = "direct_debit.success"
     private val DIRECT_CHARGE_BUSINESS_DECLINE = "direct_debit.business_decline"
     private val DIRECT_CHARGE_USER_DECLINE = "direct_debit.user_decline"
     private val CHECKOUT_INSUFFICIENT_FUNDS = "checkout.insufficient_funds"
@@ -30,7 +30,7 @@ internal class WebInterface(private val redirect: (ThePeerResult) -> Unit ) {
     private val CHECKOUT_BUSINESS_DECLINE = "checkout.business_decline"
     private val CHECKOUT_USER_DECLINE = "checkout.user_decline"
     private val SEND_CLOSE = "send.close"
-    private val DIRECT_DEBIT_CLOSE = "direct_debit.close"
+    private val DIRECT_CHARGE_CLOSE = "direct_debit.close"
     private val CHECKOUT_CLOSE = "checkout.close"
 
 
@@ -49,7 +49,7 @@ internal class WebInterface(private val redirect: (ThePeerResult) -> Unit ) {
                 redirect(ThePeerResult.Cancelled)
             }
             else -> {
-                redirect(ThePeerResult.Error(Throwable(event.event)))
+                redirect(ThePeerResult.Error(Throwable(event.event.getLastPart())))
             }
         }
 
@@ -73,10 +73,10 @@ internal class WebInterface(private val redirect: (ThePeerResult) -> Unit ) {
     fun handleDirectDebitEvent(event: ThePeerEvent) {
 
         when (event.event) {
-            DIRECT_DEBIT_SUCCESS -> {
+            DIRECT_CHARGE_SUCCESS -> {
                 redirect(ThePeerResult.Success(event.data))
             }
-            DIRECT_DEBIT_CLOSE -> {
+            DIRECT_CHARGE_CLOSE -> {
                 redirect(ThePeerResult.Cancelled)
             }
             else -> {

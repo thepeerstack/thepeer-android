@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         //initialize ThePeer SDK
         val thePeer = ThePeer.Builder(
             activity = this,
-            amount = BigDecimal(10000.00),
+            amount = BigDecimal(10000000),
             currency = ThePeerCurrency.NGN,
             userReference = getString(R.string.user_reference),
             resultListener = resultListener
