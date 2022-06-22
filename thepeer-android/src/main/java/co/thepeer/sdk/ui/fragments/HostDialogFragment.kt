@@ -1,23 +1,16 @@
 package co.thepeer.sdk.ui.fragments
 
 import android.annotation.SuppressLint
-import android.app.Dialog
-import android.content.DialogInterface
 import android.content.Intent
-import android.content.res.Resources
 import android.os.Bundle
-import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewGroup.LayoutParams.MATCH_PARENT
-import android.view.Window
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.webkit.WebViewCompat
-import co.thepeer.sdk.R
+import androidx.fragment.app.Fragment
 import co.thepeer.sdk.databinding.FragmentHostDialogBinding
 import co.thepeer.sdk.model.ThePeerParam
 import co.thepeer.sdk.model.ThePeerResult
@@ -25,14 +18,10 @@ import co.thepeer.sdk.utils.Logger
 import co.thepeer.sdk.utils.ThePeerConstants
 import co.thepeer.sdk.utils.Urls
 import co.thepeer.sdk.utils.WebInterface
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.gson.Gson
 
 
 class HostDialogFragment(private val thePeerParam: ThePeerParam) :
-    BottomSheetDialogFragment() {
+    Fragment() {
 
     private lateinit var binding: FragmentHostDialogBinding
 
@@ -41,6 +30,21 @@ class HostDialogFragment(private val thePeerParam: ThePeerParam) :
 
     }
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentHostDialogBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val url = Urls.createTransactionUrl(thePeerParam)
+        Logger.log(this, url)
+        setupWebView(url)
+    }
 
     @SuppressLint("SetJavaScriptEnabled")
     private fun setupWebView(transactionUrl: String) {
@@ -68,38 +72,13 @@ class HostDialogFragment(private val thePeerParam: ThePeerParam) :
         binding.webViewPeer.loadUrl(transactionUrl)
     }
 
-
-
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val dialog = context?.let { BottomSheetDialog(it, R.style.CustomBottomSheetDialogTheme) }
-        binding = FragmentHostDialogBinding.inflate(layoutInflater)
-        val heightInPixels = ((Resources.getSystem().displayMetrics.heightPixels)).toInt()
-        val params = ViewGroup.LayoutParams(MATCH_PARENT, heightInPixels)
-        Log.v(TAG, heightInPixels.toString())
-
-        dialog?.behavior?.apply {
-            isDraggable = false
-            isCancelable = false
-            maxHeight = heightInPixels
-            state = BottomSheetBehavior.STATE_EXPANDED
-        }
-
-        dialog?.setContentView(binding.root, params)
-        Log.v("Params", thePeerParam.toString())
-        val url = Urls.createTransactionUrl(thePeerParam)
-        Logger.log(this, url)
-        setupWebView(url)
-
-
-        return dialog as Dialog
-    }
-
-    override fun onCancel(dialog: DialogInterface) {
-        super.onCancel(dialog)
+    override fun onDestroyView() {
+        super.onDestroyView()
         binding.webViewPeer.loadUrl("about:blank")
         binding.webViewPeer.clearHistory()
         redirectWithResult(ThePeerResult.Cancelled)
     }
+
 
     private fun redirectWithResult(result: ThePeerResult) {
         val resultData = Intent()
@@ -107,6 +86,7 @@ class HostDialogFragment(private val thePeerParam: ThePeerParam) :
         activity?.setResult(AppCompatActivity.RESULT_OK, resultData)
         activity?.finish()
     }
+
 
 
 }

@@ -19,9 +19,9 @@ class ThePeerSDKActivity : AppCompatActivity() {
         params = intent.getParcelableExtra<ThePeerParam>(ThePeerConstants.THE_PEER_PARAMS)!!
 
         params?.let {
-            frag = HostDialogFragment(it)
-            frag.show(supportFragmentManager, "home")
-
+            supportFragmentManager.beginTransaction()
+                .replace(binding.fragmentContainer.id, HostDialogFragment(it))
+                .commit()
         }
 
     }
