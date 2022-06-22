@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="RoundedBlueButton">
+        <attr name="text" format="string" />
+        <attr name="enabled" format="boolean"/>
+        <attr name="showProgress" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="BumpedTopLayout">
+        <attr name="bumpIcon" format="reference"/>
+        <attr name="iconRadius" format="dimension" />
+        <attr name="iconPadding" format="dimension"/>
+        <attr name="cornerRadius" format="dimension" />
+        <attr name="bumpLapRadius" format="dimension"/>
+        <attr name="borderSize" format="dimension" />
+        <attr name="borderColor" format="color" />
+        <attr name="allowIconBorder" format="boolean" />
+    </declare-styleable>
+</resources>

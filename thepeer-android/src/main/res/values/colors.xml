@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#0066FF</color>
+    <color name="colorPrimaryDark">#0066FF</color>
+    <color name="colorAccent">#0066FF</color>
+    <color name="secondaryTextColor">#24366B</color>
+
+    <color name="lightGray">#43979797</color>
+    <color name="unclearWhite">#F7FCFF</color>
+    <color name="textLight">#727EA3</color>
+
+    <color name="disabledButtonColor">#7AA8EE</color>
+    <color name="environmentColor">#DB3838</color>
+
+</resources>
