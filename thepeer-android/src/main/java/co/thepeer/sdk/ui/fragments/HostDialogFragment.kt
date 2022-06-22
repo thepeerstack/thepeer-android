@@ -79,14 +79,11 @@ class HostDialogFragment(private val thePeerParam: ThePeerParam) :
         redirectWithResult(ThePeerResult.Cancelled)
     }
 
-
     private fun redirectWithResult(result: ThePeerResult) {
         val resultData = Intent()
         resultData.putExtra(ThePeerConstants.TRANSACTION_RESULT, result)
         activity?.setResult(AppCompatActivity.RESULT_OK, resultData)
         activity?.finish()
     }
-
-
 
 }
