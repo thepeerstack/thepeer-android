@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         //initialize ThePeer SDK
         ThePeer thePeer =new ThePeer.Builder(
                 this,
-                new BigDecimal("1000.00"),
+                new BigDecimal("100000.00"),
                 ThePeerCurrency.NGN,
                 getResources().getString(R.string.user_reference),
                 new ThePeerResultListener() {
