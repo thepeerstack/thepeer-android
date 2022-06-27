@@ -6,6 +6,9 @@ plugins {
     id 'maven-publish'
 }
 
+
+version = "1.0.0"
+
 android {
     compileSdk 31
 
@@ -71,19 +74,10 @@ dependencies {
     testImplementation "org.robolectric:shadows-multidex:$robolectricVersion"
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                // Applies the component for the release build variant.
-                from components.release
-
-                // You can then customize attributes of the publication as shown below.
-                groupId = 'io.thepeer'
-                artifactId = 'thepeer-android'
-                version = '1.0.0-alpha01.2'
-            }
-        }
-    }
+ext {
+    PUBLISH_GROUP_ID = 'co.thepeer'
+    PUBLISH_VERSION = '0.0.Alpha001'
+    PUBLISH_ARTIFACT_ID = 'thepeer-android'
 }
+
+apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"
