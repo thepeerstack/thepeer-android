@@ -1,9 +1,9 @@
 package co.thepeer.sdk.ui
 
-import co.thepeer.sdk.model.ThePeerTransaction
+import co.thepeer.sdk.model.ThepeerTransaction
 
-interface ThePeerResultListener {
-    fun onSuccess(transaction: ThePeerTransaction)
+interface ThepeerResultListener {
+    fun onSuccess(transaction: ThepeerTransaction)
 
     fun onError(error: Throwable)
 

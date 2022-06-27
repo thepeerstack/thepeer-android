@@ -8,8 +8,8 @@
     <application
         >
         <activity
-            android:name=".ui.activity.ThePeerSDKActivity"
-            android:theme="@style/ThePeerSDKTheme"
+            android:name=".ui.activity.ThepeerSdkActivity"
+            android:theme="@style/ThepeerSDKTheme"
             android:screenOrientation="portrait"
             />
     </application>

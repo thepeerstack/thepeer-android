@@ -4,25 +4,25 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContract
-import co.thepeer.sdk.model.ThePeerParam
-import co.thepeer.sdk.model.ThePeerResult
-import co.thepeer.sdk.ui.activity.ThePeerSDKActivity
-import co.thepeer.sdk.utils.ThePeerConstants
+import co.thepeer.sdk.model.ThepeerResult
+import co.thepeer.sdk.model.ThepeerParam
+import co.thepeer.sdk.ui.activity.ThepeerSdkActivity
+import co.thepeer.sdk.utils.ThepeerConstants
 
-internal class ThePeerResultContract: ActivityResultContract<ThePeerParam, ThePeerResult>() {
-    override fun createIntent(context: Context, input: ThePeerParam): Intent {
-       return Intent(context, ThePeerSDKActivity::class.java).apply {
-           putExtra(ThePeerConstants.THE_PEER_PARAMS, input)
+internal class ThepeerResultContract: ActivityResultContract< ThepeerParam, ThepeerResult>() {
+    override fun createIntent(context: Context, input: ThepeerParam): Intent {
+       return Intent(context, ThepeerSdkActivity::class.java).apply {
+           putExtra(ThepeerConstants.THE_PEER_PARAMS, input)
        }
     }
 
-    override fun parseResult(resultCode: Int, intent: Intent?): ThePeerResult {
+    override fun parseResult(resultCode: Int, intent: Intent?): ThepeerResult {
         if (resultCode == Activity.RESULT_CANCELED) {
-            return ThePeerResult.Cancelled
+            return ThepeerResult.Cancelled
         }
 
         if (resultCode == Activity.RESULT_OK && intent != null) {
-            return intent.getParcelableExtra(ThePeerConstants.TRANSACTION_RESULT)
+            return intent.getParcelableExtra(ThepeerConstants.TRANSACTION_RESULT)
                 ?: error(NO_RESULT_ERROR)
         }
 

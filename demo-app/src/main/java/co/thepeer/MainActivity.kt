@@ -5,11 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import co.thepeer.databinding.ActivityMainBinding
-import co.thepeer.sdk.ThePeer
-import co.thepeer.sdk.model.ThePeerSdkType
-import co.thepeer.sdk.model.ThePeerTransaction
-import co.thepeer.sdk.ui.ThePeerResultListener
-import co.thepeer.sdk.utils.ThePeerCurrency
+import co.thepeer.sdk.Thepeer
+import co.thepeer.sdk.model.ThepeerTransaction
+import co.thepeer.sdk.ui.ThepeerResultListener
+import co.thepeer.sdk.utils.ThepeerCurrency
 import java.math.BigDecimal
 
 class MainActivity : AppCompatActivity() {
@@ -23,29 +22,29 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //initialize ThePeer SDK
-        val thePeer = ThePeer.Builder(
+        //initialize Thepeer SDK
+        val thepeer = Thepeer.Builder(
             activity = this,
             amount = BigDecimal(10000000),
-            currency = ThePeerCurrency.NGN,
+            currency = ThepeerCurrency.NGN,
             userReference = getString(R.string.user_reference),
             resultListener = resultListener
         ).setMeta(mapOf("city" to "Uyo")).build()
 
         binding.btnSendMoney.setOnClickListener {
             //calling ThePeer SDK
-            thePeer.send()
+            thepeer.send()
         }
         binding.btnCheckout.setOnClickListener {
-            thePeer.checkout("email@gmail.com")
+            thepeer.checkout("email@gmail.com")
         }
         binding.btnDirectDebit.setOnClickListener {
-            thePeer.directCharge()
+            thepeer.directCharge()
         }
     }
 
-    private val resultListener = object : ThePeerResultListener {
-        override fun onSuccess(transaction: ThePeerTransaction) {
+    private val resultListener = object : ThepeerResultListener {
+        override fun onSuccess(transaction: ThepeerTransaction) {
             binding.resultText.text = transaction.toString()
 
         }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ThePeerAndroidSDK</string>
+    <string name="app_name">ThepeerAndroidSDK</string>
     <string name="send_money">Send Money</string>
     <string name="checkout">Checkout</string>
     <string name="direct_charge">Direct Charge</string>

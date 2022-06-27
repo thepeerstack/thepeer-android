@@ -11,7 +11,7 @@ import java.math.BigDecimal
  * details required to initiate a transaction
  */
 @Parcelize
-data class ThePeerParam(
+data class ThepeerParam(
     val publicKey: String,
     val sdkType: String,
     val amount: BigDecimal,
@@ -22,4 +22,4 @@ data class ThePeerParam(
 ): Parcelable
 
 
-enum class ThePeerSdkType{SEND, CHECKOUT, DIRECT_CHARGE, NONE}
+enum class ThepeerSdkType{SEND, CHECKOUT, DIRECT_CHARGE, NONE}
