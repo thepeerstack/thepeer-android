@@ -60,7 +60,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
      
 
         //initialize Thepeer SDK
-        val thePeer = Thepeer.Builder(
+        val thepeer = Thepeer.Builder(
             activity = this,
             amount = BigDecimal(10000.00),
             currency = "NGN",
