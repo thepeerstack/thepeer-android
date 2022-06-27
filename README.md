@@ -93,7 +93,7 @@ JAVA
                 }
 ```
 
-| Paramater name          |  Description                          |  Required                         |
+| Paramater name         |  Description                          |  Required                         |
 |------------------------ | --------------------------------------|--------------------------------------|
 | `amount`                | The amount you intend to send and must be pass as an integer in kobo      |`true`|
 | `currency `             | Currency which can be  `"NGN"` or  `"USD"`    |`true`|
