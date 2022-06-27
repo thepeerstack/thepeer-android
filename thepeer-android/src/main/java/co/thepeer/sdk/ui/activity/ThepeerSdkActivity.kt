@@ -4,9 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import co.thepeer.sdk.databinding.SdkActivityBinding
 import co.thepeer.sdk.model.ThepeerParam
-import co.thepeer.sdk.ui.fragments.HostDialogFragment
+import co.thepeer.sdk.ui.fragments.ThepeerFragment
 import co.thepeer.sdk.utils.ThepeerConstants
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class ThepeerSdkActivity : AppCompatActivity() {
     private var params: ThepeerParam? = null
@@ -19,7 +18,7 @@ class ThepeerSdkActivity : AppCompatActivity() {
 
         params?.let {
             supportFragmentManager.beginTransaction()
-                .replace(binding.fragmentContainer.id, HostDialogFragment(it))
+                .replace(binding.fragmentContainer.id, ThepeerFragment(it))
                 .commit()
         }
 

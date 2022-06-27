@@ -11,19 +11,19 @@ import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import co.thepeer.sdk.databinding.FragmentHostDialogBinding
-import co.thepeer.sdk.model.ThepeerResult
+import co.thepeer.sdk.databinding.FragmentThepeerBinding
 import co.thepeer.sdk.model.ThepeerParam
+import co.thepeer.sdk.model.ThepeerResult
 import co.thepeer.sdk.utils.Logger
 import co.thepeer.sdk.utils.ThepeerConstants
 import co.thepeer.sdk.utils.Urls
 import co.thepeer.sdk.utils.WebInterface
 
 
-class HostDialogFragment(private val thePeerParam: ThepeerParam) :
+class ThepeerFragment(private val thePeerParam: ThepeerParam) :
     Fragment() {
 
-    private lateinit var binding: FragmentHostDialogBinding
+    private lateinit var binding: FragmentThepeerBinding
 
     companion object {
         private const val TAG = "TestFragment"
@@ -35,7 +35,7 @@ class HostDialogFragment(private val thePeerParam: ThepeerParam) :
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHostDialogBinding.inflate(layoutInflater)
+        binding = FragmentThepeerBinding.inflate(layoutInflater)
         return binding.root
     }
 
