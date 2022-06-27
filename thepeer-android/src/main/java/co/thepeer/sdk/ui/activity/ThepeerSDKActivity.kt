@@ -7,7 +7,7 @@ import co.thepeer.sdk.model.ThepeerParam
 import co.thepeer.sdk.ui.fragments.ThepeerFragment
 import co.thepeer.sdk.utils.ThepeerConstants
 
-class ThepeerSdkActivity : AppCompatActivity() {
+class ThepeerSDKActivity : AppCompatActivity() {
     private var params: ThepeerParam? = null
     private lateinit var binding: SdkActivityBinding
     override fun onCreate(savedInstanceState: Bundle?) {

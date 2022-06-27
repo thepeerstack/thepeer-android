@@ -6,14 +6,14 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.appcompat.app.AppCompatActivity
 import co.thepeer.sdk.model.ThepeerParam
 import co.thepeer.sdk.model.ThepeerResult
-import co.thepeer.sdk.model.ThepeerSdkType
+import co.thepeer.sdk.model.ThepeerSDKType
 import co.thepeer.sdk.ui.ThepeerResultContract
 import co.thepeer.sdk.ui.ThepeerResultListener
 import co.thepeer.sdk.utils.ThepeerConstants
 import java.math.BigDecimal
 
 /**
- * This is Thepeer SDk class instance
+ * This is Thepeer SDK class instance
  * @param activity -> Required to launch the drop in UI activity
  * @param publicKey -> Required to authenticate the merchant
  * @param resultRegistry -> used to register the activity for result
@@ -24,7 +24,7 @@ import java.math.BigDecimal
  */
 class Thepeer internal constructor(
     private var publicKey: String,
-    private var resultRegistry: ActivityResultLauncher< ThepeerParam>,
+    private var resultRegistry: ActivityResultLauncher<ThepeerParam>,
     private var activity: AppCompatActivity,
     private var amount: BigDecimal,
     private var currency: String,
@@ -49,15 +49,15 @@ class Thepeer internal constructor(
     ) {
 
         var resultRegistry = activity.registerForActivityResult(
-           ThepeerResultContract(),
-           activity.activityResultRegistry
-       ) { chargeResult ->
-           when (chargeResult) {
-               is ThepeerResult.Success -> resultListener.onSuccess(chargeResult.transaction)
-               is ThepeerResult.Error -> resultListener.onError(chargeResult.error)
-               ThepeerResult.Cancelled -> resultListener.onCancelled()
-           }
-       }
+            ThepeerResultContract(),
+            activity.activityResultRegistry
+        ) { chargeResult ->
+            when (chargeResult) {
+                is ThepeerResult.Success -> resultListener.onSuccess(chargeResult.transaction)
+                is ThepeerResult.Error -> resultListener.onError(chargeResult.error)
+                ThepeerResult.Cancelled -> resultListener.onCancelled()
+            }
+        }
         private var publicKey = getPublicKeyFromManifest(activity)
 
         private var meta: Map<String, String> = emptyMap()
@@ -111,9 +111,9 @@ class Thepeer internal constructor(
      * This function will be called to launch ThePeer Send Money Widget
      */
     fun send() {
-        val params =  ThepeerParam(
+        val params = ThepeerParam(
             publicKey,
-            getSdkType(ThepeerSdkType.SEND),
+            getSdkType(ThepeerSDKType.SEND),
             amount,
             currency,
             userReference,
@@ -132,7 +132,7 @@ class Thepeer internal constructor(
     fun checkout(emailAddress: String) {
         val params = ThepeerParam(
             publicKey,
-            getSdkType(ThepeerSdkType.CHECKOUT),
+            getSdkType(ThepeerSDKType.CHECKOUT),
             amount,
             currency,
             userReference,
@@ -149,9 +149,9 @@ class Thepeer internal constructor(
      * This function will be called to launch ThePeer Direct Charge Widget
      */
     fun directCharge() {
-        val params =  ThepeerParam(
+        val params = ThepeerParam(
             publicKey,
-            getSdkType(ThepeerSdkType.DIRECT_CHARGE),
+            getSdkType(ThepeerSDKType.DIRECT_CHARGE),
             amount,
             currency,
             userReference,
@@ -165,15 +165,15 @@ class Thepeer internal constructor(
     }
 
 
-    private fun getSdkType(type: Enum<ThepeerSdkType>): String {
+    private fun getSdkType(type: Enum<ThepeerSDKType>): String {
         return when (type) {
-            ThepeerSdkType.SEND -> {
+            ThepeerSDKType.SEND -> {
                 return ThepeerConstants.SEND
             }
-            ThepeerSdkType.CHECKOUT -> {
+            ThepeerSDKType.CHECKOUT -> {
                 return ThepeerConstants.CHECKOUT
             }
-            ThepeerSdkType.DIRECT_CHARGE -> {
+            ThepeerSDKType.DIRECT_CHARGE -> {
                 return ThepeerConstants.DIRECT_CHARGE
             }
             else -> ""

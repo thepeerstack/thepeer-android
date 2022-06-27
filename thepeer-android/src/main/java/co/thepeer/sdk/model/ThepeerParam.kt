@@ -1,10 +1,7 @@
 package co.thepeer.sdk.model
 
-import android.os.Parcel
 import android.os.Parcelable
-import androidx.appcompat.app.AppCompatActivity
 import kotlinx.parcelize.Parcelize
-import kotlinx.parcelize.RawValue
 import java.math.BigDecimal
 
 /**
@@ -22,4 +19,4 @@ data class ThepeerParam(
 ): Parcelable
 
 
-enum class ThepeerSdkType{SEND, CHECKOUT, DIRECT_CHARGE, NONE}
+enum class ThepeerSDKType{SEND, CHECKOUT, DIRECT_CHARGE, NONE}

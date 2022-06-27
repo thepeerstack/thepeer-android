@@ -7,7 +7,7 @@
 
     <application>
         <activity
-            android:name=".ui.activity.ThepeerSdkActivity"
+            android:name=".ui.activity.ThepeerSDKActivity"
             android:theme="@style/ThepeerSDKTheme"
             android:screenOrientation="portrait"
             />
