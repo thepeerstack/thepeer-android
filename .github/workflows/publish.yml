@@ -18,10 +18,13 @@ jobs:
           distribution: adopt
           java-version: 11
 
+        # Get publish version from tag
       - id: get_version
         uses: battila7/get-version-action@v2
       - name: Get version from tag
-        run: echo ${{ secrets.SIGNING_KEY }}
+        run: echo ${{ teps.get_version.outputs.version-without-v }}
+
+
         # Builds the release artifacts of the library
       - name: Release build
         run: ./gradlew :thepeer-android:assembleRelease
