@@ -25,7 +25,6 @@ To your root build.gradle file add:
 ```
 allprojects {
     repositories {
-        google()
         mavenCentral() 
     }
 }
@@ -36,7 +35,7 @@ To your app-level build.gradle file add:
 ```groovy
 dependencies {
     // ...
-    implementation "co.thepeer.android-sdk:android:sdk:[coming soon]"
+    implementation "co.thepeer:thepeer-android:[version]"
 }
 ```
 
@@ -93,7 +92,7 @@ JAVA
                 }
 ```
 
-| Paramater name         |  Description                          |  Required                         |
+| Parameter name         |  Description                          |  Required                         |
 |------------------------ | --------------------------------------|--------------------------------------|
 | `amount`                | The amount you intend to send and must be pass as an integer in kobo      |`true`|
 | `currency `             | Currency which can be  `"NGN"` or  `"USD"`    |`true`|
