@@ -18,8 +18,10 @@ jobs:
           distribution: adopt
           java-version: 11
 
+      - id: get_version
+        uses: battila7/get-version-action@v2
       - name: Get version from tag
-        run: echo "PUBLISH_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+        run: echo ${{ secrets.SIGNING_KEY }}
         # Builds the release artifacts of the library
       - name: Release build
         run: ./gradlew :thepeer-android:assembleRelease
@@ -38,4 +40,4 @@ jobs:
           SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
           SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
           SONATYPE_STAGING_PROFILE_ID: ${{ secrets.SONATYPE_STAGING_PROFILE_ID }}
-          PUBLISH_VERSION: ${{ env.PUBLISH_VERSION }}
+          PUBLISH_VERSION: ${{ steps.get_version.outputs.version-without-v }}
