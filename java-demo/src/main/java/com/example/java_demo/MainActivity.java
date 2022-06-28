@@ -11,10 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.math.BigDecimal;
 import java.util.HashMap;
 
-import co.thepeer.sdk.ThePeer;
-import co.thepeer.sdk.model.ThePeerTransaction;
-import co.thepeer.sdk.ui.ThePeerResultListener;
-import co.thepeer.sdk.utils.ThePeerCurrency;
+import co.thepeer.sdk.Thepeer;
+import co.thepeer.sdk.model.ThepeerTransaction;
+import co.thepeer.sdk.ui.ThepeerResultListener;
+import co.thepeer.sdk.utils.ThepeerCurrency;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,16 +26,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         HashMap<String, String> meta = new HashMap<>();
-        //initialize ThePeer SDK
-        ThePeer thePeer =new ThePeer.Builder(
+        //initialize Thepeer SDK
+        Thepeer thepeer =new Thepeer.Builder(
                 this,
-                new BigDecimal("1000.00"),
-                ThePeerCurrency.NGN,
+                new BigDecimal("100000.00"),
+                ThepeerCurrency.NGN,
                 getResources().getString(R.string.user_reference),
-                new ThePeerResultListener() {
-
+                new ThepeerResultListener() {
                     @Override
-                    public void onSuccess(@NonNull ThePeerTransaction transaction) {
+                    public void onSuccess(@NonNull ThepeerTransaction transaction) {
                         ((TextView) findViewById(R.id.resultText)).setText(transaction.toString());
                     }
 
@@ -55,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         ((Button) findViewById(R.id.btnSendMoney)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                thePeer.send();
+                thepeer.send();
             }
         });
 

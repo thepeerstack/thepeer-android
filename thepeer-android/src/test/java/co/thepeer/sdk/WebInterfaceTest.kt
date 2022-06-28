@@ -1,17 +1,15 @@
 package co.thepeer.sdk
 
-import android.content.Intent
 import android.util.Log
-import co.thepeer.sdk.model.ThePeerEvent
-import co.thepeer.sdk.model.ThePeerResult
-import co.thepeer.sdk.utils.Logger
-import co.thepeer.sdk.utils.ThePeerConstants
+import co.thepeer.sdk.model.ThepeerEvent
 import co.thepeer.sdk.utils.WebInterface
-import io.mockk.*
+import io.mockk.every
+import io.mockk.mockk
+import io.mockk.mockkStatic
+import io.mockk.verify
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import org.junit.Assert.assertEquals
-import org.junit.Ignore
 
 
 class WebInterfaceTest {
@@ -32,7 +30,7 @@ class WebInterfaceTest {
 
     @Test
     fun `handle send event - success`() {
-        val event = webInterface.convertToGsonFromString(MockData.sendSuccess) as ThePeerEvent
+        val event = webInterface.convertToGsonFromString(MockData.sendSuccess) as ThepeerEvent
         webInterface.sendResponse(MockData.sendSuccess)
         verify {
             webInterface.handleSendEvent(event)
@@ -44,7 +42,7 @@ class WebInterfaceTest {
 
     @Test
     fun `handle send event - close`() {
-        val event = webInterface.convertToGsonFromString(MockData.sendClose) as ThePeerEvent
+        val event = webInterface.convertToGsonFromString(MockData.sendClose) as ThepeerEvent
         webInterface.sendResponse(MockData.sendClose)
         verify {
             webInterface.handleSendEvent(event)
@@ -56,7 +54,7 @@ class WebInterfaceTest {
 
     @Test
     fun `handle checkout event - success`() {
-        val event = webInterface.convertToGsonFromString(MockData.checkoutSuccess) as ThePeerEvent
+        val event = webInterface.convertToGsonFromString(MockData.checkoutSuccess) as ThepeerEvent
         webInterface.sendResponse(MockData.checkoutSuccess)
         verify {
             webInterface.handleCheckoutEvent(event)
@@ -68,7 +66,7 @@ class WebInterfaceTest {
 
     @Test
     fun `handle checkout event - close`() {
-        val event = webInterface.convertToGsonFromString(MockData.checkoutClose) as ThePeerEvent
+        val event = webInterface.convertToGsonFromString(MockData.checkoutClose) as ThepeerEvent
         webInterface.sendResponse(MockData.checkoutClose)
         verify {
             webInterface.handleCheckoutEvent(event)
@@ -81,7 +79,7 @@ class WebInterfaceTest {
     @Test
     fun `handle direct debit event - success`() {
         val event =
-            webInterface.convertToGsonFromString(MockData.directDebitSuccess) as ThePeerEvent
+            webInterface.convertToGsonFromString(MockData.directDebitSuccess) as ThepeerEvent
         webInterface.sendResponse(MockData.directDebitSuccess)
         verify {
             webInterface.handleDirectDebitEvent(event)
@@ -93,7 +91,7 @@ class WebInterfaceTest {
 
     @Test
     fun `handle direct debit event - close`() {
-        val event = webInterface.convertToGsonFromString(MockData.directDebitClose) as ThePeerEvent
+        val event = webInterface.convertToGsonFromString(MockData.directDebitClose) as ThepeerEvent
         webInterface.sendResponse(MockData.directDebitClose)
         verify {
             webInterface.handleDirectDebitEvent(event)

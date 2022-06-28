@@ -6,14 +6,14 @@ import java.math.BigDecimal
 
 
 @Parcelize
-data class ThePeerEvent(
+data class ThepeerEvent(
     val event: String,
-    val data: ThePeerTransaction
+    val data: ThepeerTransaction
 ) : Parcelable
 
 
 @Parcelize
-data class ThePeerTransaction(
+data class ThepeerTransaction(
     val id: String,
     val remark: String,
     val amount: BigDecimal,
@@ -22,16 +22,16 @@ data class ThePeerTransaction(
     val refund: Boolean,
     val channel: String,
     val status: String,
-    val checkout: ThePeerCheckout?,
+    val checkout: ThepeerCheckout?,
     val mode: String,
     val reference: String,
-    val user: ThePeerUser
+    val user: ThepeerUser
 
 ) : Parcelable
 
 
 @Parcelize
-data class ThePeerUser(
+data class ThepeerUser(
     val name: String,
     val identifier: String,
     val identifier_type: String,
@@ -41,13 +41,13 @@ data class ThePeerUser(
 
 
 @Parcelize
-data class ThePeerBusiness(
+data class ThepeerBusiness(
     val name: String,
     val logo: String
 ) : Parcelable
 
 @Parcelize
-data class ThePeerCheckout(
+data class ThepeerCheckout(
     val id: String,
     val amount: BigDecimal,
     val currency: String,
@@ -59,6 +59,6 @@ data class ThePeerCheckout(
 
 @Parcelize
 data class LinkedAccount(
-    val user: ThePeerUser,
-    val business: ThePeerBusiness
+    val user: ThepeerUser,
+    val business: ThepeerBusiness
 ) : Parcelable
