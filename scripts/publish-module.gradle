@@ -52,11 +52,6 @@ afterEvaluate {
                         }
                     }
                     developers {
-                        developer {
-                            id = 'zsmb13'
-                            name = 'Márton Braun'
-                            email = 'marton@getstream.io'
-                        }
                         // Add all other devs here...
                     }
 
