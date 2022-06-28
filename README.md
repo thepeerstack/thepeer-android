@@ -1,5 +1,7 @@
 # Thepeer official Android SDK
 
+![CI](https://github.com/thepeerstack/thepeer-android/actions/workflows/android.yml/badge.svg)
+
 Thepeer Android SDK gives one integration access to all fintech businesses on your Android App
 
 
