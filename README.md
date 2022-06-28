@@ -1,6 +1,6 @@
-# ThePeer Android SDK
+# Thepeer official Android SDK
 
-ThePeer Android SDK gives one integration access to all fintech businesses on your Android App
+Thepeer Android SDK gives one integration access to all fintech businesses on your Android App
 
 
 1. Send
@@ -25,7 +25,6 @@ To your root build.gradle file add:
 ```
 allprojects {
     repositories {
-        google()
         mavenCentral() 
     }
 }
@@ -36,7 +35,7 @@ To your app-level build.gradle file add:
 ```groovy
 dependencies {
     // ...
-    implementation "co.thepeer.android-sdk:android:sdk:[coming soon]"
+    implementation "co.thepeer:thepeer-android:[version]"
 }
 ```
 
@@ -54,13 +53,13 @@ KOTLIN
 
 ```kotlin
 
-//initialize ThePeer SDK
+//initialize Thepeer SDK
 override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
      
 
-        //initialize ThePeer SDK
-        val thePeer = ThePeer.Builder(
+        //initialize Thepeer SDK
+        val thepeer = Thepeer.Builder(
             activity = this,
             amount = BigDecimal(10000.00),
             currency = "NGN",
@@ -76,24 +75,24 @@ JAVA
 
 ```java
 
-//initialize ThePeer SDK
+//initialize Thepeer SDK
    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //initialize ThePeer SDK
-        ThePeer thePeer =new ThePeer.Builder(
+        //initialize Thepeer SDK
+        Thepeer thepeer =new Thepeer.Builder(
                 this,
                 new BigDecimal("1000.00"),
                 "NGN",
                 getResources().getString(R.string.user_reference),
-                new ThePeerResultListener())
+                new ThepeerResultListener())
                 
                 }
 ```
 
-| Paramater name          |  Description                          |  Required                         |
+| Parameter name         |  Description                          |  Required                         |
 |------------------------ | --------------------------------------|--------------------------------------|
 | `amount`                | The amount you intend to send and must be pass as an integer in kobo      |`true`|
 | `currency `             | Currency which can be  `"NGN"` or  `"USD"`    |`true`|
@@ -108,7 +107,7 @@ KOTLIN
 
 ```kotlin
 
-thePeer.send()
+thepeer.send()
 
 ```
 
@@ -116,7 +115,7 @@ JAVA
 
 ```java
 
-thePeer.send();
+thepeer.send();
 
 ```
 
@@ -128,7 +127,7 @@ KOTLIN
 
 ```kotlin
 
-thePeer.checkout(email: String)
+thepeer.checkout(email: String)
 
 ```
 
@@ -136,7 +135,7 @@ JAVA
 
 ```java
 
-thePeer.checkout(String email);
+thepeer.checkout(String email);
 
 ```
 
@@ -148,7 +147,7 @@ KOTLIN
 
 ```kotlin
 
-thePeer.directCharge()
+thepeer.directCharge()
 
 ```
 
@@ -156,19 +155,19 @@ JAVA
 
 ```java
 
-thePeer.directCharge();
+thepeer.directCharge();
 
 ```
 
 ## Listener
 
 Once the request is initiated the SDK will wait from response from the service and notify the App
-via `ThePeerResultListener`
+via `ThepeerResultListener`
 KOTLIN
 
 ```Kotlin
-private val resultListener = object : ThePeerResultListener {
-    override fun onSuccess(transaction: ThePeerTransaction) {
+private val resultListener = object : ThepeerResultListener {
+    override fun onSuccess(transaction: ThepeerTransaction) {
         //Transaction Successful
         Log.v(TAG, transaction.toString())
 
@@ -192,10 +191,10 @@ JAVA
 
 ```java
 
- new ThePeerResultListener() {
+ new ThepeerResultListener() {
 
                     @Override
-                    public void onSuccess(@NonNull ThePeerTransaction transaction) {
+                    public void onSuccess(@NonNull ThepeerTransaction transaction) {
                         ((TextView) findViewById(R.id.resultText)).setText(transaction.toString());
                     }
 

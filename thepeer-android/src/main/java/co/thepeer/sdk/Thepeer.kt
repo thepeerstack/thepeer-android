@@ -4,16 +4,16 @@ import android.content.Context
 import android.content.pm.PackageManager
 import androidx.activity.result.ActivityResultLauncher
 import androidx.appcompat.app.AppCompatActivity
-import co.thepeer.sdk.model.ThePeerParam
-import co.thepeer.sdk.model.ThePeerResult
-import co.thepeer.sdk.model.ThePeerSdkType
-import co.thepeer.sdk.ui.ThePeerResultContract
-import co.thepeer.sdk.ui.ThePeerResultListener
-import co.thepeer.sdk.utils.ThePeerConstants
+import co.thepeer.sdk.model.ThepeerParam
+import co.thepeer.sdk.model.ThepeerResult
+import co.thepeer.sdk.model.ThepeerSDKType
+import co.thepeer.sdk.ui.ThepeerResultContract
+import co.thepeer.sdk.ui.ThepeerResultListener
+import co.thepeer.sdk.utils.ThepeerConstants
 import java.math.BigDecimal
 
 /**
- * This is ThePeer SDk class instance
+ * This is Thepeer SDK class instance
  * @param activity -> Required to launch the drop in UI activity
  * @param publicKey -> Required to authenticate the merchant
  * @param resultRegistry -> used to register the activity for result
@@ -22,9 +22,9 @@ import java.math.BigDecimal
  * @param userReference -> Customer indexed user reference from ThePeer
  * @param meta -> Optional information for the transaction
  */
-class ThePeer internal constructor(
+class Thepeer internal constructor(
     private var publicKey: String,
-    private var resultRegistry: ActivityResultLauncher<ThePeerParam>,
+    private var resultRegistry: ActivityResultLauncher<ThepeerParam>,
     private var activity: AppCompatActivity,
     private var amount: BigDecimal,
     private var currency: String,
@@ -45,19 +45,19 @@ class ThePeer internal constructor(
         private var amount: BigDecimal,
         private var currency: String,
         private var userReference: String,
-        resultListener: ThePeerResultListener
+        resultListener: ThepeerResultListener
     ) {
 
         var resultRegistry = activity.registerForActivityResult(
-           ThePeerResultContract(),
-           activity.activityResultRegistry
-       ) { chargeResult ->
-           when (chargeResult) {
-               is ThePeerResult.Success -> resultListener.onSuccess(chargeResult.transaction)
-               is ThePeerResult.Error -> resultListener.onError(chargeResult.error)
-               ThePeerResult.Cancelled -> resultListener.onCancelled()
-           }
-       }
+            ThepeerResultContract(),
+            activity.activityResultRegistry
+        ) { chargeResult ->
+            when (chargeResult) {
+                is ThepeerResult.Success -> resultListener.onSuccess(chargeResult.transaction)
+                is ThepeerResult.Error -> resultListener.onError(chargeResult.error)
+                ThepeerResult.Cancelled -> resultListener.onCancelled()
+            }
+        }
         private var publicKey = getPublicKeyFromManifest(activity)
 
         private var meta: Map<String, String> = emptyMap()
@@ -67,7 +67,7 @@ class ThePeer internal constructor(
                 context.packageName,
                 PackageManager.GET_META_DATA
             )
-            return applicationInfo.metaData?.getString(ThePeerConstants.PUBLIC_KEY_FROM_MANIFEST)
+            return applicationInfo.metaData?.getString(ThepeerConstants.PUBLIC_KEY_FROM_MANIFEST)
                 .orEmpty()
         }
 
@@ -92,8 +92,8 @@ class ThePeer internal constructor(
             return this
         }
 
-        fun build(): ThePeer {
-            return ThePeer(
+        fun build(): Thepeer {
+            return Thepeer(
                 publicKey,
                 resultRegistry,
                 activity,
@@ -111,9 +111,9 @@ class ThePeer internal constructor(
      * This function will be called to launch ThePeer Send Money Widget
      */
     fun send() {
-        val params = ThePeerParam(
+        val params = ThepeerParam(
             publicKey,
-            getSdkType(ThePeerSdkType.SEND),
+            getSdkType(ThepeerSDKType.SEND),
             amount,
             currency,
             userReference,
@@ -130,9 +130,9 @@ class ThePeer internal constructor(
      * This function will be called to launch ThePeer Checkout Widget
      */
     fun checkout(emailAddress: String) {
-        val params = ThePeerParam(
+        val params = ThepeerParam(
             publicKey,
-            getSdkType(ThePeerSdkType.CHECKOUT),
+            getSdkType(ThepeerSDKType.CHECKOUT),
             amount,
             currency,
             userReference,
@@ -149,9 +149,9 @@ class ThePeer internal constructor(
      * This function will be called to launch ThePeer Direct Charge Widget
      */
     fun directCharge() {
-        val params = ThePeerParam(
+        val params = ThepeerParam(
             publicKey,
-            getSdkType(ThePeerSdkType.DIRECT_CHARGE),
+            getSdkType(ThepeerSDKType.DIRECT_CHARGE),
             amount,
             currency,
             userReference,
@@ -165,16 +165,16 @@ class ThePeer internal constructor(
     }
 
 
-    private fun getSdkType(type: Enum<ThePeerSdkType>): String {
+    private fun getSdkType(type: Enum<ThepeerSDKType>): String {
         return when (type) {
-            ThePeerSdkType.SEND -> {
-                return ThePeerConstants.SEND
+            ThepeerSDKType.SEND -> {
+                return ThepeerConstants.SEND
             }
-            ThePeerSdkType.CHECKOUT -> {
-                return ThePeerConstants.CHECKOUT
+            ThepeerSDKType.CHECKOUT -> {
+                return ThepeerConstants.CHECKOUT
             }
-            ThePeerSdkType.DIRECT_CHARGE -> {
-                return ThePeerConstants.DIRECT_CHARGE
+            ThepeerSDKType.DIRECT_CHARGE -> {
+                return ThepeerConstants.DIRECT_CHARGE
             }
             else -> ""
         }

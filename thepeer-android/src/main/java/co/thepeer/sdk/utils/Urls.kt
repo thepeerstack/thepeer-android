@@ -1,11 +1,11 @@
 package co.thepeer.sdk.utils
 
-import co.thepeer.sdk.model.ThePeerParam
+import co.thepeer.sdk.model.ThepeerParam
 import com.google.gson.Gson
 
 internal object Urls {
 
-    fun createTransactionUrl(data: ThePeerParam): String {
+    fun createTransactionUrl(data: ThepeerParam): String {
         var BASE_URL = "https://chain.thepeer.co?"
 
         val params = mapOf(

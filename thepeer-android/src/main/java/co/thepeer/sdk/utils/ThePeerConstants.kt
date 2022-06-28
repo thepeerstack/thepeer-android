@@ -1,6 +1,6 @@
 package co.thepeer.sdk.utils
 
-class ThePeerConstants {
+class ThepeerConstants {
     companion object{
         const val THE_PEER_PARAMS = "peer_params"
         const val SEND = "send"
