@@ -19,7 +19,6 @@ import co.thepeer.sdk.utils.ThepeerConstants
 import co.thepeer.sdk.utils.Urls
 import co.thepeer.sdk.utils.WebInterface
 
-
 class ThepeerFragment(private val thePeerParam: ThepeerParam) :
     Fragment() {
 
@@ -27,7 +26,6 @@ class ThepeerFragment(private val thePeerParam: ThepeerParam) :
 
     companion object {
         private const val TAG = "TestFragment"
-
     }
 
     override fun onCreateView(
@@ -60,13 +58,15 @@ class ThepeerFragment(private val thePeerParam: ThepeerParam) :
                 super.onPageFinished(view, url)
                 binding.webViewPeer.isVisible = true
             }
-
         }
 
         activity?.let {
-            binding.webViewPeer.addJavascriptInterface(WebInterface { results ->
-                redirectWithResult(results)
-            }, "Android")
+            binding.webViewPeer.addJavascriptInterface(
+                WebInterface { results ->
+                    redirectWithResult(results)
+                },
+                "Android"
+            )
         }
 
         binding.webViewPeer.loadUrl(transactionUrl)
@@ -85,5 +85,4 @@ class ThepeerFragment(private val thePeerParam: ThepeerParam) :
         activity?.setResult(AppCompatActivity.RESULT_OK, resultData)
         activity?.finish()
     }
-
 }

@@ -11,7 +11,6 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
-
 class WebInterfaceTest {
 
     private lateinit var webInterface: WebInterface
@@ -23,10 +22,7 @@ class WebInterfaceTest {
         mockk<Throwable>(relaxed = true)
         every { Log.d(any(), any()) } returns 0
         every { Log.e(any(), any()) } returns 0
-
-
     }
-
 
     @Test
     fun `handle send event - success`() {
@@ -37,7 +33,6 @@ class WebInterfaceTest {
         }
 
         assertEquals("send.success", event.event)
-
     }
 
     @Test
@@ -49,7 +44,6 @@ class WebInterfaceTest {
         }
 
         assertEquals("send.close", event.event)
-
     }
 
     @Test
@@ -61,7 +55,6 @@ class WebInterfaceTest {
         }
 
         assertEquals("checkout.success", event.event)
-
     }
 
     @Test
@@ -73,7 +66,6 @@ class WebInterfaceTest {
         }
 
         assertEquals("checkout.close", event.event)
-
     }
 
     @Test
@@ -86,7 +78,6 @@ class WebInterfaceTest {
         }
 
         assertEquals("direct_debit.success", event.event)
-
     }
 
     @Test
@@ -98,7 +89,5 @@ class WebInterfaceTest {
         }
 
         assertEquals("direct_debit.close", event.event)
-
     }
-
 }

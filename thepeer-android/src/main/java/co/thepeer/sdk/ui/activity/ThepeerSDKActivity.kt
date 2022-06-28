@@ -21,7 +21,6 @@ class ThepeerSDKActivity : AppCompatActivity() {
                 .replace(binding.fragmentContainer.id, ThepeerFragment(it))
                 .commit()
         }
-
     }
 
     override fun onBackPressed() {
@@ -32,6 +31,4 @@ class ThepeerSDKActivity : AppCompatActivity() {
         super.onDestroy()
         params = null
     }
-
 }
-

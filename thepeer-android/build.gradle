@@ -87,3 +87,4 @@ afterEvaluate {
         }
     }
 }
+apply from: "$rootDir/thepeer-android/config/ktlint.gradle"

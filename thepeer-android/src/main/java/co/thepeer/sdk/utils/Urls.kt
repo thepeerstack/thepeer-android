@@ -21,11 +21,9 @@ internal object Urls {
         for (k in params.keys) {
             if (params[k] != null) {
                 val value = params[k]
-                BASE_URL = "$BASE_URL${k}=${value}&"
+                BASE_URL = "$BASE_URL$k=$value&"
             }
         }
         return BASE_URL.dropLast(1)
     }
-
-
 }

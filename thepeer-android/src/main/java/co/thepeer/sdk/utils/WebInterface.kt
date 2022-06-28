@@ -2,15 +2,14 @@ package co.thepeer.sdk.utils
 
 import android.util.Log
 import android.webkit.JavascriptInterface
-import co.thepeer.sdk.model.ThepeerResult
 import co.thepeer.sdk.model.ThepeerEvent
+import co.thepeer.sdk.model.ThepeerResult
 import com.google.gson.Gson
 
 /**
  * This webinterface handles events from the webview
  */
-internal class WebInterface(private val redirect: (ThepeerResult) -> Unit ) {
-
+internal class WebInterface(private val redirect: (ThepeerResult) -> Unit) {
 
     private val SEND_INSUFFICIENT_FUNDS = "send.insufficient_funds"
     private val SEND_USER_INSUFFICIENT_FUNDS = "send.user_insufficient_funds"
@@ -30,14 +29,12 @@ internal class WebInterface(private val redirect: (ThepeerResult) -> Unit ) {
     private val DIRECT_CHARGE_CLOSE = "direct_debit.close"
     private val CHECKOUT_CLOSE = "checkout.close"
 
-
-     inline fun <reified T> convertToGsonFromString(json: String): T {
+    inline fun <reified T> convertToGsonFromString(json: String): T {
         val adapter = Gson().getAdapter(T::class.java)
         return adapter.fromJson(json)
     }
 
-
-    fun handleSendEvent(event:  ThepeerEvent) {
+    fun handleSendEvent(event: ThepeerEvent) {
         when (event.event) {
             SEND_SUCCESS -> {
                 redirect(ThepeerResult.Success(event.data))
@@ -49,10 +46,9 @@ internal class WebInterface(private val redirect: (ThepeerResult) -> Unit ) {
                 redirect(ThepeerResult.Error(Throwable(event.event.getLastPart())))
             }
         }
-
     }
 
-     fun handleCheckoutEvent(event:  ThepeerEvent) {
+    fun handleCheckoutEvent(event: ThepeerEvent) {
         when (event.event) {
             CHECKOUT_SUCCESS -> {
                 redirect(ThepeerResult.Success(event.data))
@@ -64,11 +60,9 @@ internal class WebInterface(private val redirect: (ThepeerResult) -> Unit ) {
                 redirect(ThepeerResult.Error(Throwable(event.event.getLastPart())))
             }
         }
-
     }
 
-    fun handleDirectDebitEvent(event:  ThepeerEvent) {
-
+    fun handleDirectDebitEvent(event: ThepeerEvent) {
         when (event.event) {
             DIRECT_CHARGE_SUCCESS -> {
                 redirect(ThepeerResult.Success(event.data))
@@ -80,10 +74,7 @@ internal class WebInterface(private val redirect: (ThepeerResult) -> Unit ) {
                 redirect(ThepeerResult.Error(Throwable(event.event.getLastPart())))
             }
         }
-
     }
-
-
 
     @JavascriptInterface
     fun sendResponse(response: String) {
@@ -103,9 +94,6 @@ internal class WebInterface(private val redirect: (ThepeerResult) -> Unit ) {
             }
         } catch (e: Exception) {
             Log.e("WebInterface", e.message.toString())
-
         }
-
-
     }
 }

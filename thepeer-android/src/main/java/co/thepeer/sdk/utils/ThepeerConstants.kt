@@ -1,7 +1,7 @@
 package co.thepeer.sdk.utils
 
 class ThepeerConstants {
-    companion object{
+    companion object {
         const val THE_PEER_PARAMS = "peer_params"
         const val SEND = "send"
         const val CHECKOUT = "checkout"
@@ -10,4 +10,3 @@ class ThepeerConstants {
         const val PUBLIC_KEY_FROM_MANIFEST = "co.thepeer.PublicKey"
     }
 }
-

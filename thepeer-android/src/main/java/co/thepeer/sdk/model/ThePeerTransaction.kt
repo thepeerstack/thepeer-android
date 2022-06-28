@@ -4,13 +4,11 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 import java.math.BigDecimal
 
-
 @Parcelize
 data class ThepeerEvent(
     val event: String,
     val data: ThepeerTransaction
 ) : Parcelable
-
 
 @Parcelize
 data class ThepeerTransaction(
@@ -29,7 +27,6 @@ data class ThepeerTransaction(
 
 ) : Parcelable
 
-
 @Parcelize
 data class ThepeerUser(
     val name: String,
@@ -38,7 +35,6 @@ data class ThepeerUser(
     val email: String?,
     val reference: String?
 ) : Parcelable
-
 
 @Parcelize
 data class ThepeerBusiness(
@@ -53,7 +49,6 @@ data class ThepeerCheckout(
     val currency: String,
     val status: String,
     val linked_account: LinkedAccount
-
 
 ) : Parcelable
 
