@@ -27,7 +27,7 @@ jobs:
         uses: lucasnlm/ktlint-action@master
 
       - name: Check code quality
-        run: ./gradlew ktlint
+        run: ./gradlew thepeer-android:ktlint
 
       - name: Build thepeer-android library
         run: ./gradlew thepeer-android:build
