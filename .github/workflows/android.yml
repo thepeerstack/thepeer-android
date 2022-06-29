@@ -23,12 +23,11 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-#     This will be enabled after the code-quality PR is merged
-#      - name: Run Ktlint
-#        uses: lucasnlm/ktlint-action@master
-#
-#      - name: Check code quality
-#        run: ./gradlew thepeer-android:ktlint
+      - name: Run Ktlint
+        uses: lucasnlm/ktlint-action@master
+
+      - name: Check code quality
+        run: ./gradlew thepeer-android:ktlint
 
       - name: Build thepeer-android library
         run: ./gradlew thepeer-android:build
