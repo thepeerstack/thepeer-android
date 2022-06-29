@@ -52,6 +52,16 @@ afterEvaluate {
                         }
                     }
                     developers {
+                        developer {
+                            id = 'zsmb13'
+                            name = 'Kamsi Oleka'
+                            email = 'kamsy@thepeer.co'
+                        }
+                        developer {
+                            id = 'zsmb14'
+                            name = 'Nsikak Thompson'
+                            email = 'nsikakthompson73@gmail.com'
+                        }
                         // Add all other devs here...
                     }
 
