@@ -23,7 +23,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Check code quality with Ktlint
-        run: cd thepeer-android && ./gradlew ktlint --stacktrace
+        run: ./gradlew thepeer-android:ktlint --stacktrace
 
       - name: Build thepeer-android library
         run: ./gradlew thepeer-android:build
