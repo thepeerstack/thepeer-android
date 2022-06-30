@@ -3,7 +3,7 @@ package co.thepeer.sdk.model
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
-sealed class ThepeerResult: Parcelable {
+sealed class ThepeerResult : Parcelable {
     @Parcelize
     data class Success(val transaction: ThepeerTransaction) : ThepeerResult()
 
@@ -11,5 +11,5 @@ sealed class ThepeerResult: Parcelable {
     data class Error(val error: Throwable) : ThepeerResult()
 
     @Parcelize
-    object  Cancelled : ThepeerResult()
+    object Cancelled : ThepeerResult()
 }

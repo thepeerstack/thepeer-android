@@ -22,7 +22,7 @@ jobs:
       - id: get_version
         uses: battila7/get-version-action@v2
       - name: Get version from tag
-        run: echo ${{ teps.get_version.outputs.version-without-v }}
+        run: echo ${{ steps.get_version.outputs.version-without-v }}
 
 
         # Builds the release artifacts of the library

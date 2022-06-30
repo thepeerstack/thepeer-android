@@ -1,0 +1,34 @@
+configurations {
+    ktlint
+}
+
+dependencies {
+    ktlint("com.pinterest:ktlint:$ktlintVersion") {
+        attributes {
+            attribute(Bundling.BUNDLING_ATTRIBUTE, getObjects().named(Bundling, Bundling.EXTERNAL))
+        }
+    }
+}
+
+tasks.register("ktlint", JavaExec) {
+    group = "verification"
+    description = "Check Kotlin code style."
+    classpath = configurations.ktlint
+    main = "com.pinterest.ktlint.Main"
+    args "**/*.kt" , "!**/build/**/*.kt"
+}
+
+tasks.register("ktlintFormat", JavaExec) {
+    group = "formatting"
+    description = "Fix Kotlin code style deviations."
+    classpath = configurations.ktlint
+    main = "com.pinterest.ktlint.Main"
+    args "-F", "**/*.kt" , "!**/build/**/*.kt"
+}
+
+tasks.register("ktlintAndroidStudio", JavaExec) {
+    description = "Setup Android Studio to use the same code style as ktlint."
+    classpath = configurations.ktlint
+    main = "com.pinterest.ktlint.Main"
+    args "--android", "applyToIDEAProject", "-y"
+}

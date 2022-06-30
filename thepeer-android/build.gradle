@@ -81,3 +81,4 @@ ext {
 }
 
 apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"
+apply from: "$rootDir/thepeer-android/config/ktlint.gradle"

@@ -29,7 +29,7 @@ class Thepeer internal constructor(
     private var amount: BigDecimal,
     private var currency: String,
     private var userReference: String,
-    private var meta: Map<String, String> = emptyMap(),
+    private var meta: Map<String, String> = emptyMap()
 ) {
 
     /**
@@ -76,7 +76,6 @@ class Thepeer internal constructor(
             return this
         }
 
-
         fun setCurrency(currency: String): Builder {
             this.currency = currency
             return this
@@ -102,10 +101,8 @@ class Thepeer internal constructor(
                 userReference,
                 meta
             )
-
         }
     }
-
 
     /**
      * This function will be called to launch ThePeer Send Money Widget
@@ -164,7 +161,6 @@ class Thepeer internal constructor(
         resultRegistry.launch(params)
     }
 
-
     private fun getSdkType(type: Enum<ThepeerSDKType>): String {
         return when (type) {
             ThepeerSDKType.SEND -> {
@@ -178,6 +174,5 @@ class Thepeer internal constructor(
             }
             else -> ""
         }
-
     }
 }

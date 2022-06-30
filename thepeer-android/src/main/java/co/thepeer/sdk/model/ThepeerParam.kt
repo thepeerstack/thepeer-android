@@ -15,8 +15,7 @@ data class ThepeerParam(
     val currency: String,
     val userReference: String,
     val emailAddress: String? = null,
-    val meta: Map<String, String>,
-): Parcelable
+    val meta: Map<String, String>
+) : Parcelable
 
-
-enum class ThepeerSDKType{SEND, CHECKOUT, DIRECT_CHARGE, NONE}
+enum class ThepeerSDKType { SEND, CHECKOUT, DIRECT_CHARGE, NONE }
