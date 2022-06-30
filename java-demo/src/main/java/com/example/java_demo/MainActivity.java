@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         HashMap<String, String> meta = new HashMap<>();
-        //initialize Thepeer SDK
+        // initialize Thepeer SDK
         Thepeer thepeer =new Thepeer.Builder(
                 this,
                 new BigDecimal("100000.00"),
