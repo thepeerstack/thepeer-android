@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "co.thepeer"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 33
         versionCode 1
         versionName "1.0"
