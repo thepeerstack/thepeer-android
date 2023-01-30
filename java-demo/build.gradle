@@ -1,15 +1,14 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
 }
 
 android {
-    compileSdk 31
+    compileSdkVersion 33
 
     defaultConfig {
         applicationId "com.example.java_demo"
-        minSdk 21
-        targetSdk 31
+        minSdkVersion 21
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
 
@@ -29,7 +28,7 @@ android {
 }
 
 dependencies {
-    implementation 'co.thepeer:thepeer-android:1.0.0-alpha05'
+    implementation project(":thepeer-android")
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
