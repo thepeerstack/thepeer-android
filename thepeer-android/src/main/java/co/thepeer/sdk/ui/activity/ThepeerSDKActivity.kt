@@ -81,6 +81,14 @@ class ThepeerSDKActivity : AppCompatActivity() {
                 }
             }
 
+            override fun shouldOverrideUrlLoading(
+                view: WebView?,
+                request: WebResourceRequest?
+            ): Boolean {
+                startActivity(Intent(Intent.ACTION_VIEW, request?.url))
+                return true
+            }
+
         }
 
 
