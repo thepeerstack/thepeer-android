@@ -16,13 +16,12 @@ import co.thepeer.sdk.R
 import co.thepeer.sdk.databinding.SdkActivityBinding
 import co.thepeer.sdk.model.ThepeerParam
 import co.thepeer.sdk.model.ThepeerResult
-import co.thepeer.sdk.ui.fragments.ThepeerFragment
 import co.thepeer.sdk.utils.*
 import co.thepeer.sdk.utils.Logger
 import co.thepeer.sdk.utils.Urls
 import co.thepeer.sdk.utils.WebInterface
 
-class ThepeerSDKActivity : AppCompatActivity() {
+internal class ThepeerSdkActivity : AppCompatActivity() {
     private var params: ThepeerParam? = null
     private var url: String = ""
     private lateinit var binding: SdkActivityBinding
@@ -53,6 +52,9 @@ class ThepeerSDKActivity : AppCompatActivity() {
             Logger.log(this, url)
         }
 
+        binding.includeRetryView.closeBtn.setOnClickListener {
+            finish()
+        }
     }
 
     @SuppressLint("SetJavaScriptEnabled")
