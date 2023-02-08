@@ -16,10 +16,11 @@ import co.thepeer.sdk.R
 import co.thepeer.sdk.databinding.SdkActivityBinding
 import co.thepeer.sdk.model.ThepeerParam
 import co.thepeer.sdk.model.ThepeerResult
-import co.thepeer.sdk.utils.*
 import co.thepeer.sdk.utils.Logger
+import co.thepeer.sdk.utils.ThepeerConstants
 import co.thepeer.sdk.utils.Urls
 import co.thepeer.sdk.utils.WebInterface
+import co.thepeer.sdk.utils.isNetworkConnectionAvailable
 
 internal class ThepeerSdkActivity : AppCompatActivity() {
     private var params: ThepeerParam? = null
@@ -44,7 +45,6 @@ internal class ThepeerSdkActivity : AppCompatActivity() {
         if (params == null) {
             throw IllegalStateException("Params should not be null. Initialize thePeer using this function  Thepeer.Builder(...)")
         }
-
 
         params?.let {
             url = Urls.createTransactionUrl(it)
@@ -90,9 +90,7 @@ internal class ThepeerSdkActivity : AppCompatActivity() {
                 startActivity(Intent(Intent.ACTION_VIEW, request?.url))
                 return true
             }
-
         }
-
 
         binding.webViewPeer.addJavascriptInterface(
             WebInterface { results ->
@@ -125,7 +123,6 @@ internal class ThepeerSdkActivity : AppCompatActivity() {
                 Toast.makeText(this, getString(R.string.retry_text), Toast.LENGTH_LONG)
                     .show()
             }
-
         } else {
             Toast.makeText(this, "Something went wrong. Contact thePeer support", Toast.LENGTH_LONG)
                 .show()
@@ -139,7 +136,7 @@ internal class ThepeerSdkActivity : AppCompatActivity() {
         }
     }
 
-    private fun hideRetryView(){
+    private fun hideRetryView() {
         binding.includeRetryView.retryView.isVisible = false
         binding.loading.isVisible = true
     }
@@ -169,10 +166,9 @@ internal class ThepeerSdkActivity : AppCompatActivity() {
         object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 params = null
-                if(!isNetworkConnectionAvailable){
+                if (!isNetworkConnectionAvailable) {
                     finish()
                 }
             }
         }
-
 }
