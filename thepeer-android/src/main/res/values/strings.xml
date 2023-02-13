@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="retry_text">Oops, Check your internet connection and Retry</string>
-    <string name="retry">Retry</string>
+    <string name="retry_text">Something went wrong</string>
+    <string name="retry_text_1">Something went wrong trying to load the Webview. Please try again</string>
+    <string name="retry">Try again</string>
 </resources>
