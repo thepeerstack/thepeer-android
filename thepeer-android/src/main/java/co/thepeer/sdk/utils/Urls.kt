@@ -6,7 +6,7 @@ import com.google.gson.Gson
 internal object Urls {
 
     fun createTransactionUrl(data: ThepeerParam): String {
-        var BASE_URL = "https://groot.thepeer.co?"
+        var BASE_URL = "https://chain.thepeer.co?"
 
         val params = mapOf(
             "publicKey" to data.publicKey,
