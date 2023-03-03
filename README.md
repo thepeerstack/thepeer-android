@@ -55,12 +55,12 @@ KOTLIN
 
 ```kotlin
 
-//initialize Thepeer SDK
+// initialize Thepeer SDK
 override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
      
 
-        //initialize Thepeer SDK
+        // initialize Thepeer SDK
         val thepeer = Thepeer.Builder(
             activity = this,
             amount = BigDecimal(10000.00),
@@ -77,13 +77,13 @@ JAVA
 
 ```java
 
-//initialize Thepeer SDK
+// initialize Thepeer SDK
    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //initialize Thepeer SDK
+        // initialize Thepeer SDK
         Thepeer thepeer =new Thepeer.Builder(
                 this,
                 new BigDecimal("1000.00"),
@@ -170,18 +170,18 @@ KOTLIN
 ```Kotlin
 private val resultListener = object : ThepeerResultListener {
     override fun onSuccess(transaction: ThepeerTransaction) {
-        //Transaction Successful
+        // Transaction Successful
         Log.v(TAG, transaction.toString())
 
     }
 
     override fun onError(error: Throwable) {
-        //Transaction Error occured
+        // Transaction Error occured
         Log.e(TAG, error.message)
     }
 
     override fun onCancelled() {
-        //Transaction was cancelled
+        // Transaction was cancelled
         Log.e(TAG, " Cancelled")
     }
 
