@@ -22,17 +22,17 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //initialize Thepeer SDK
+        // initialize Thepeer SDK
         val thepeer = Thepeer.Builder(
             activity = this,
-            amount = BigDecimal(10000),
+            amount = BigDecimal(10000000),
             currency = ThepeerCurrency.NGN,
             userReference = getString(R.string.user_reference),
             resultListener = resultListener
         ).setMeta(mapOf("city" to "Uyo")).build()
 
         binding.btnSendMoney.setOnClickListener {
-            //calling Thepeer SDK
+            // calling ThePeer SDK
             thepeer.send()
         }
         binding.btnCheckout.setOnClickListener {
