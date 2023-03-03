@@ -11,11 +11,10 @@ Thepeer Android SDK gives one integration access to all fintech businesses on yo
 
 ## Demo
 
-https://user-images.githubusercontent.com/16048595/167891393-6f198712-7648-4f45-959a-a289fab42006.mo
+| Send        |  Checkout                  |  Direct Charge                         |
+|------------------------ | --------------------------------------|--------------------------------------|
+|![Send-shot](https://user-images.githubusercontent.com/16048595/221840767-aafc2abd-475f-4b2b-9c82-a7c2373cfd0e.png) | ![checkout-shot](https://user-images.githubusercontent.com/16048595/221840744-9efad3ca-8d5a-4186-91d4-7e9a3f408bf7.png)          | ![direct-charge-shot](https://user-images.githubusercontent.com/16048595/221840760-103db030-471d-4208-aa15-b2d97e2de96b.png)|
 
-https://user-images.githubusercontent.com/16048595/167891381-2ad76193-3cf1-4abe-870b-0924fee498fb.mov 
-
-https://user-images.githubusercontent.com/16048595/167891309-d6608bba-20dc-4840-be60-96c6ef390ea3.mov
 
 
 ## Setup Implementation
