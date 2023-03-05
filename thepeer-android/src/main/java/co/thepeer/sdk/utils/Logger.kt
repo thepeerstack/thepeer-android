@@ -1,7 +1,7 @@
 package co.thepeer.sdk.utils
 
 import android.util.Log
-import co.thepeer.sdk.BuildConfig
+import androidx.viewbinding.BuildConfig
 
 internal object Logger {
 

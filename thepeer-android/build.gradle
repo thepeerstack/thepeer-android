@@ -10,11 +10,11 @@ plugins {
 version = "1.0.0"
 
 android {
-    compileSdk 31
+    compileSdkVersion 33
 
     defaultConfig {
-        minSdk 21
-        targetSdk 31
+        minSdkVersion 23
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
 
@@ -46,13 +46,12 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     // Kotlin
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     implementation 'androidx.webkit:webkit:1.4.0'
 

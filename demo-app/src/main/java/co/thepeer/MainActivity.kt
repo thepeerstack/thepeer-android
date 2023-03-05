@@ -59,14 +59,4 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == INITIATE_PAYMENT_REQUEST_CODE && resultCode == RESULT_OK) {
-            Log.v("Demo", data?.getStringExtra(KEY_RESULT) ?: "")
-
-        }
-
-    }
 }
