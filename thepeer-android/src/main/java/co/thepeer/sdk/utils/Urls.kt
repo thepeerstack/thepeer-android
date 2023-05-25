@@ -15,7 +15,7 @@ internal object Urls {
             "userReference" to data.userReference,
             "email" to data.emailAddress,
             "sdkType" to data.sdkType,
-            "meta" to Gson().toJson(data.meta)
+            "meta" to Gson().toJson(data.meta),
         )
 
         for (k in params.keys) {

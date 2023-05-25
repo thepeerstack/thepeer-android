@@ -21,7 +21,7 @@
 
         <meta-data
             android:name="co.thepeer.PublicKey"
-            android:value="pspk_test_m7pbk9fbjaofi92shcgxq8is4pfgxl0t0bq3g3bmrp7iq" />
+            android:value="pspk_test_2aj8xasztf4domzd2nphinvzkvecpbuyxldkvr3pkuvko" />
     </application>
 
 </manifest>

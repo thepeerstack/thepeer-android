@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 import java.math.BigDecimal
 
 /**
- * details required to initiate a transaction
+ * These are resolved params from the user provided config to initiate a transaction
  */
 @Parcelize
 data class ThepeerParam(
@@ -15,7 +15,16 @@ data class ThepeerParam(
     val currency: String,
     val userReference: String,
     val emailAddress: String? = null,
-    val meta: Map<String, String>
+    val meta: Map<String, String>,
 ) : Parcelable
 
 enum class ThepeerSDKType { SEND, CHECKOUT, DIRECT_CHARGE, NONE }
+
+/**
+ * This is the public data class for getting user config for a transaction.
+ */
+data class ThepeerConfig(
+    val amount: BigDecimal,
+    val currency: String,
+    val meta: Map<String, String> = emptyMap(),
+)
