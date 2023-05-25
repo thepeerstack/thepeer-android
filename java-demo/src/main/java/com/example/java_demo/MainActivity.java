@@ -12,12 +12,11 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 
 import co.thepeer.sdk.Thepeer;
-import co.thepeer.sdk.model.ThepeerTransaction;
+import co.thepeer.sdk.model.ThepeerConfig;
 import co.thepeer.sdk.ui.ThepeerResultListener;
 import co.thepeer.sdk.utils.ThepeerCurrency;
 
 public class MainActivity extends AppCompatActivity {
-
 
 
     @Override
@@ -27,14 +26,12 @@ public class MainActivity extends AppCompatActivity {
 
         HashMap<String, String> meta = new HashMap<>();
         // initialize Thepeer SDK
-        Thepeer thepeer =new Thepeer.Builder(
-                this,
-                new BigDecimal("100000.00"),
-                ThepeerCurrency.NGN,
+        Thepeer thepeer = new Thepeer.Initiate(
                 getResources().getString(R.string.user_reference),
+                this,
                 new ThepeerResultListener() {
                     @Override
-                    public void onSuccess(@NonNull ThepeerTransaction transaction) {
+                    public void onSuccess(@NonNull String transaction) {
                         ((TextView) findViewById(R.id.resultText)).setText(transaction.toString());
                     }
 
@@ -48,13 +45,13 @@ public class MainActivity extends AppCompatActivity {
 
                     }
 
-                }).setMeta(meta)
+                })
                 .build();
 
         ((Button) findViewById(R.id.btnSendMoney)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                thepeer.send();
+                thepeer.send(new ThepeerConfig(new BigDecimal("100000"), ThepeerCurrency.NGN, meta));
             }
         });
 

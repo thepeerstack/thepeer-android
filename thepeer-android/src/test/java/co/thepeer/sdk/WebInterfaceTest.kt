@@ -29,7 +29,7 @@ class WebInterfaceTest {
         val event = webInterface.convertToGsonFromString(MockData.sendSuccess) as ThepeerEvent
         webInterface.sendResponse(MockData.sendSuccess)
         verify {
-            webInterface.handleSendEvent(event)
+            webInterface.handleSendEvent(event, MockData.sendSuccess)
         }
 
         assertEquals("send.success", event.event)
@@ -40,7 +40,7 @@ class WebInterfaceTest {
         val event = webInterface.convertToGsonFromString(MockData.sendClose) as ThepeerEvent
         webInterface.sendResponse(MockData.sendClose)
         verify {
-            webInterface.handleSendEvent(event)
+            webInterface.handleSendEvent(event, MockData.sendClose)
         }
 
         assertEquals("send.close", event.event)
@@ -51,7 +51,7 @@ class WebInterfaceTest {
         val event = webInterface.convertToGsonFromString(MockData.checkoutSuccess) as ThepeerEvent
         webInterface.sendResponse(MockData.checkoutSuccess)
         verify {
-            webInterface.handleCheckoutEvent(event)
+            webInterface.handleCheckoutEvent(event, MockData.checkoutSuccess)
         }
 
         assertEquals("checkout.success", event.event)
@@ -62,7 +62,7 @@ class WebInterfaceTest {
         val event = webInterface.convertToGsonFromString(MockData.checkoutClose) as ThepeerEvent
         webInterface.sendResponse(MockData.checkoutClose)
         verify {
-            webInterface.handleCheckoutEvent(event)
+            webInterface.handleCheckoutEvent(event, MockData.checkoutClose)
         }
 
         assertEquals("checkout.close", event.event)
@@ -74,7 +74,7 @@ class WebInterfaceTest {
             webInterface.convertToGsonFromString(MockData.directDebitSuccess) as ThepeerEvent
         webInterface.sendResponse(MockData.directDebitSuccess)
         verify {
-            webInterface.handleDirectDebitEvent(event)
+            webInterface.handleDirectDebitEvent(event, MockData.directDebitSuccess)
         }
 
         assertEquals("direct_debit.success", event.event)
@@ -85,7 +85,7 @@ class WebInterfaceTest {
         val event = webInterface.convertToGsonFromString(MockData.directDebitClose) as ThepeerEvent
         webInterface.sendResponse(MockData.directDebitClose)
         verify {
-            webInterface.handleDirectDebitEvent(event)
+            webInterface.handleDirectDebitEvent(event, MockData.directDebitClose)
         }
 
         assertEquals("direct_debit.close", event.event)

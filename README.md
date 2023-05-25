@@ -60,14 +60,10 @@ override fun onCreate(savedInstanceState: Bundle?) {
      
 
         // initialize Thepeer SDK
-        val thepeer = Thepeer.Builder(
-            activity = this,
-            amount = BigDecimal(10000.00),
-            currency = "NGN",
-            userReference = getString(R.string.user_reference),
-            resultListener = resultListener
-        ).setMeta(mapOf("remark" to "Enjoy")).build()
-        
+    val thepeer = Thepeer.Initiate(
+        activity = this,
+        userReference = "YOUR _USER_REFERENCE",
+        resultListener = resultListener).build()
         }
 
 ```
@@ -83,21 +79,29 @@ JAVA
         setContentView(R.layout.activity_main);
 
         // initialize Thepeer SDK
-        Thepeer thepeer =new Thepeer.Builder(
-                this,
-                new BigDecimal("1000.00"),
-                "NGN",
+        Thepeer thepeer = new Thepeer.Initiate(
                 getResources().getString(R.string.user_reference),
+                activity,
                 new ThepeerResultListener())
                 
                 }
+                
 ```
+| Parameter name         |  Description                          |  Required                         |
+|------------------------ | --------------------------------------|--------------------------------------|
+| `userReference`         | The user reference returned by Thepeer API when a user has been indexed              |`true`|
 
+## Configuration
+Every request will require this configuration to initiate a transaction.
+
+```
+  val config = ThepeerConfig(amount = BigDecimal(100000), currency = "NGN", meta  = mapOf())
+  
+```
 | Parameter name         |  Description                          |  Required                         |
 |------------------------ | --------------------------------------|--------------------------------------|
 | `amount`                | The amount you intend to send and must be pass as an integer in kobo      |`true`|
 | `currency `             | Currency which can be  `"NGN"` or  `"USD"`    |`true`|
-| `userReference`         | The user reference returned by Thepeer API when a user has been indexed              |`true`|
 | `meta`  | This object should contain additional/optional attributes you would like to have on your transaction response   |`false`|
 
 ## Send
@@ -108,7 +112,8 @@ KOTLIN
 
 ```kotlin
 
-thepeer.send()
+ val config = ThepeerConfig(amount = BigDecimal(100000), currency = "NGN", meta  = mapOf())
+thepeer.send(config = config)
 
 ```
 
@@ -116,7 +121,7 @@ JAVA
 
 ```java
 
-thepeer.send();
+thepeer.send(config);
 
 ```
 
@@ -128,7 +133,8 @@ KOTLIN
 
 ```kotlin
 
-thepeer.checkout(email: String)
+val config = ThepeerConfig(amount = BigDecimal(100000), currency = "NGN", meta  = mapOf())
+thepeer.checkout("email@gmail.com", config = config)
 
 ```
 
@@ -136,7 +142,7 @@ JAVA
 
 ```java
 
-thepeer.checkout(String email);
+thepeer.checkout("email@gmail.com", config);
 
 ```
 
@@ -147,8 +153,8 @@ Initiate the Direct Charge request by calling the below function
 KOTLIN
 
 ```kotlin
-
-thepeer.directCharge()
+ val config = ThepeerConfig(amount = BigDecimal(100000), currency = "NGN", meta  = mapOf())
+thepeer.directCharge(config)
 
 ```
 
@@ -156,7 +162,7 @@ JAVA
 
 ```java
 
-thepeer.directCharge();
+thepeer.directCharge(config);
 
 ```
 
@@ -168,9 +174,9 @@ KOTLIN
 
 ```Kotlin
 private val resultListener = object : ThepeerResultListener {
-    override fun onSuccess(transaction: ThepeerTransaction) {
+    override fun onSuccess(response: String) {
         // Transaction Successful
-        Log.v(TAG, transaction.toString())
+        Log.v(TAG,response)
 
     }
 
@@ -195,7 +201,7 @@ JAVA
  new ThepeerResultListener() {
 
                     @Override
-                    public void onSuccess(@NonNull ThepeerTransaction transaction) {
+                    public void onSuccess(@NonNull String transaction) {
                         ((TextView) findViewById(R.id.resultText)).setText(transaction.toString());
                     }
 
@@ -212,6 +218,51 @@ JAVA
                 }
 
 
+```
+## Response structure
+```JSON
+{
+  "event": "send.success",
+  "type": "send.success",
+  "data": {
+    "id": "744bdf8f-17a6-46ae-bda1-b348c6d22f89",
+    "amount": 100000,
+    "channel": "send",
+    "refund": false,
+    "checkout": null,
+    "user": {
+      "reference": "73f03de5-1043-4ad1-bc2e-aa4d94ebee4f",
+      "name": "Doreen Okoh",
+      "identifier": "doreen",
+      "identifier_type": "username",
+      "email": "doreen@okoh.co.uk",
+      "created_at": "2021-04-19T19:50:26.000000Z",
+      "updated_at": "2022-02-14T22:58:25.000000Z"
+    },
+    "charge": 1000,
+    "currency": "NGN",
+    "mode": "debit",
+    "reference": "d34dfaebd727e40a8f436a4b43acbf73",
+    "remark": "food",
+    "status": "success",
+    "type": "peer",
+    "meta": null,
+    "peer": {
+      "business": {
+        "name": "Cash App",
+        "logo": "https://palaciodepeer.s3.us-east-2.amazonaws.com/business_logos/UJimBqYOu7KQIM3DwCWOuKjkDbBbVLYRuYRTgxKh.png",
+        "logo_colour": "#77cc33"
+      },
+      "user": {
+        "name": "Trojan Okoh",
+        "identifier": "trojan",
+        "identifier_type": "username"
+      }
+    },
+    "updated_at": "2023-05-25T12:32:03.000000Z",
+    "created_at": "2023-05-25T12:32:03.000000Z"
+  }
+}
 ```
 ## Support
 

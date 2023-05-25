@@ -34,62 +34,70 @@ internal class WebInterface(private val redirect: (ThepeerResult) -> Unit) {
         return adapter.fromJson(json)
     }
 
-    fun handleSendEvent(event: ThepeerEvent) {
+    fun handleSendEvent(event: ThepeerEvent, response: String) {
         when (event.event) {
             SEND_SUCCESS -> {
-                redirect(ThepeerResult.Success(event.data))
+                redirect(ThepeerResult.Success(response))
             }
+
             SEND_CLOSE -> {
                 redirect(ThepeerResult.Cancelled)
             }
+
             else -> {
-                redirect(ThepeerResult.Error(Throwable(event.event.getLastPart())))
+                redirect(ThepeerResult.Error(response))
             }
         }
     }
 
-    fun handleCheckoutEvent(event: ThepeerEvent) {
+    fun handleCheckoutEvent(event: ThepeerEvent, response: String) {
         when (event.event) {
             CHECKOUT_SUCCESS -> {
-                redirect(ThepeerResult.Success(event.data))
+                redirect(ThepeerResult.Success(response))
             }
+
             CHECKOUT_CLOSE -> {
                 redirect(ThepeerResult.Cancelled)
             }
+
             else -> {
-                redirect(ThepeerResult.Error(Throwable(event.event.getLastPart())))
+                redirect(ThepeerResult.Error(response))
             }
         }
     }
 
-    fun handleDirectDebitEvent(event: ThepeerEvent) {
+    fun handleDirectDebitEvent(event: ThepeerEvent, response: String) {
         when (event.event) {
             DIRECT_CHARGE_SUCCESS -> {
-                redirect(ThepeerResult.Success(event.data))
+                redirect(ThepeerResult.Success(response))
             }
+
             DIRECT_CHARGE_CLOSE -> {
                 redirect(ThepeerResult.Cancelled)
             }
+
             else -> {
-                redirect(ThepeerResult.Error(Throwable(event.event.getLastPart())))
+                redirect(ThepeerResult.Error(response))
             }
         }
     }
 
     @JavascriptInterface
     fun sendResponse(response: String) {
-        Logger.log(this, response)
+        Log.e(" na this response be this", response)
         try {
             val event: ThepeerEvent = convertToGsonFromString(response)
             when (event.event.getFirstPart()) {
                 "send" -> {
-                    handleSendEvent(event)
+                    handleSendEvent(event, response)
                 }
+
                 "checkout" -> {
-                    handleCheckoutEvent(event)
+                    handleCheckoutEvent(event, response)
                 }
+
                 "direct_debit" -> {
-                    handleDirectDebitEvent(event)
+                    handleDirectDebitEvent(event, response)
                 }
             }
         } catch (e: Exception) {
