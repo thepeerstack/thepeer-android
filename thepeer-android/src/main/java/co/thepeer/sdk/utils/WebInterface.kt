@@ -66,7 +66,7 @@ internal class WebInterface(private val redirect: (ThepeerResult) -> Unit) {
         }
     }
 
-    fun handleDirectDebitEvent(event: ThepeerEvent,  response: String) {
+    fun handleDirectDebitEvent(event: ThepeerEvent, response: String) {
         when (event.event) {
             DIRECT_CHARGE_SUCCESS -> {
                 redirect(ThepeerResult.Success(response))

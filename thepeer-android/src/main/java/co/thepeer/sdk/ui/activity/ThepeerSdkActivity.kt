@@ -36,7 +36,7 @@ internal class ThepeerSdkActivity : AppCompatActivity() {
         params = if (Build.VERSION.SDK_INT >= 33) {
             intent.getParcelableExtra(
                 ThepeerConstants.THE_PEER_PARAMS,
-                ThepeerParam::class.java,
+                ThepeerParam::class.java
             )
         } else {
             intent.getParcelableExtra<ThepeerParam>(ThepeerConstants.THE_PEER_PARAMS)
@@ -76,7 +76,7 @@ internal class ThepeerSdkActivity : AppCompatActivity() {
             override fun onReceivedError(
                 view: WebView?,
                 request: WebResourceRequest?,
-                error: WebResourceError?,
+                error: WebResourceError?
             ) {
                 if (error != null) {
                     showNetworkErrorRetryView()
@@ -85,7 +85,7 @@ internal class ThepeerSdkActivity : AppCompatActivity() {
 
             override fun shouldOverrideUrlLoading(
                 view: WebView?,
-                request: WebResourceRequest?,
+                request: WebResourceRequest?
             ): Boolean {
                 startActivity(Intent(Intent.ACTION_VIEW, request?.url))
                 return true
@@ -96,7 +96,7 @@ internal class ThepeerSdkActivity : AppCompatActivity() {
             WebInterface { results ->
                 redirectWithResult(results)
             },
-            "Android",
+            "Android"
         )
 
         binding.webViewPeer.loadUrl(transactionUrl)

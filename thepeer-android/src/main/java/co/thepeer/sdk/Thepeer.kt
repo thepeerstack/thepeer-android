@@ -23,7 +23,7 @@ class Thepeer internal constructor(
     private val publicKey: String,
     private val userReference: String,
     private var resultRegistry: ActivityResultLauncher<ThepeerParam>,
-    private val activity: AppCompatActivity,
+    private val activity: AppCompatActivity
 ) {
 
     /**
@@ -34,14 +34,14 @@ class Thepeer internal constructor(
     class Initiate(
         private val userReference: String,
         private val activity: AppCompatActivity,
-        private val resultListener: ThepeerResultListener,
+        private val resultListener: ThepeerResultListener
 
     ) {
         private var publicKey = ""
 
         val resultRegistry = activity.registerForActivityResult(
             ThepeerResultContract(),
-            activity.activityResultRegistry,
+            activity.activityResultRegistry
         ) { chargeResult ->
             when (chargeResult) {
                 is ThepeerResult.Success -> resultListener.onSuccess(chargeResult.response)
@@ -56,7 +56,7 @@ class Thepeer internal constructor(
             if (publicKey.isEmpty()) {
                 error(
                     "Add publicKey from business " +
-                        "dashboard as meta data to manifest file. Check documentation",
+                        "dashboard as meta data to manifest file. Check documentation"
                 )
             }
         }
@@ -64,7 +64,7 @@ class Thepeer internal constructor(
         private fun getPublicKeyFromManifest(context: Context): String {
             val applicationInfo = context.packageManager.getApplicationInfo(
                 context.packageName,
-                PackageManager.GET_META_DATA,
+                PackageManager.GET_META_DATA
             )
             return applicationInfo.metaData?.getString(ThepeerConstants.PUBLIC_KEY_FROM_MANIFEST)
                 .orEmpty()
@@ -75,7 +75,7 @@ class Thepeer internal constructor(
                 publicKey,
                 userReference,
                 resultRegistry,
-                activity,
+                activity
             )
         }
     }
@@ -85,7 +85,7 @@ class Thepeer internal constructor(
      * @param config is the transaction specific configurations.
      */
     fun send(
-        config: ThepeerConfig,
+        config: ThepeerConfig
     ) {
         val params = ThepeerParam(
             publicKey,
@@ -94,7 +94,7 @@ class Thepeer internal constructor(
             config.currency,
             userReference,
             null,
-            config.meta,
+            config.meta
         )
         resultRegistry.launch(params)
     }
@@ -106,7 +106,7 @@ class Thepeer internal constructor(
      */
     fun checkout(
         emailAddress: String,
-        config: ThepeerConfig,
+        config: ThepeerConfig
     ) {
         val params = ThepeerParam(
             publicKey,
@@ -115,7 +115,7 @@ class Thepeer internal constructor(
             config.currency,
             userReference,
             emailAddress,
-            config.meta,
+            config.meta
         )
 
         resultRegistry.launch(params)
@@ -126,7 +126,7 @@ class Thepeer internal constructor(
      * @param config is the transaction specific configurations.
      */
     fun directCharge(
-        config: ThepeerConfig,
+        config: ThepeerConfig
     ) {
         val params = ThepeerParam(
             publicKey,
@@ -135,7 +135,7 @@ class Thepeer internal constructor(
             config.currency,
             userReference,
             null,
-            config.meta,
+            config.meta
         )
         resultRegistry.launch(params)
     }
