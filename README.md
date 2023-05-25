@@ -111,6 +111,7 @@ Initiate the send request by calling the below function
 KOTLIN
 
 ```kotlin
+
  val config = ThepeerConfig(amount = BigDecimal(100000), currency = "NGN", meta  = mapOf())
 thepeer.send(config = config)
 
